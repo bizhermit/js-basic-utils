@@ -1,0 +1,26 @@
+declare const StringUtils: {
+    isString: (value: any) => value is string;
+    isNull: (value: string | null | undefined) => value is null | undefined;
+    isNullOrEmpty: (value: string | null | undefined) => value is null | undefined;
+    isNotNull: (value: string | null | undefined) => value is string;
+    isNotNullOrEmpty: (value: string | null | undefined) => value is string;
+    notNull: (value: string | null | undefined, whenNullValue: string) => string;
+    notNullOrEmpty: (value: string | null | undefined, whenNullOrEmptyValue: string) => string;
+    contains: (value: string | null | undefined, search: string) => boolean;
+    isHalfWidthNumeric: (value: string) => boolean;
+    isHalfWidthAlphabet: (value: string) => boolean;
+    isHalfWidthSymbols: (value: string) => boolean;
+    isHalfWidthAlphanumeric: (value: string) => boolean;
+    isHalfWidthAlphanumericAndSymbols: (value: string) => boolean;
+    isHalfWidthKatakana: (value: string) => boolean;
+    isHiragana: (value: string) => boolean;
+    isKatakana: (value: string) => boolean;
+    isInteger: (value: string) => boolean;
+    isPhoneNumber: (value: string) => boolean;
+    isPostalCode: (value: string) => boolean;
+    isMailAddress: (value: string) => boolean;
+    isIpv4Address: (value: string) => boolean;
+    isIpv6Address: (value: string) => boolean;
+    generateUuidV4: () => string;
+};
+export default StringUtils;

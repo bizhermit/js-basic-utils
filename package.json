@@ -1,0 +1,40 @@
+{
+  "name": "@bizhermit/basic-utils",
+  "version": "0.0.0",
+  "description": "basic types utilities",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bizhermit/basic-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bizhermit/basic-utils/issues"
+  },
+  "author": "bizhermit.com <support@bizhermit.com> (https://bizhermit.com)",
+  "homepage": "https://bizhermit.com",
+  "contributors": [
+    "Ryoichi Senda <rsenda@bizhermit.com> (https://bizhermit.com)"
+  ],
+  "license": "MIT",
+  "main": "dist",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "node dist/test.js",
+    "license": "npx license-checker --production > LICENSE",
+    "build:types": "npx rimraf basic-utils && npx cpx src/**/*.{ts,tsx} basic-utils/dist && npx tsc -p src/tsconfig.types.json --emitDeclarationOnly && npx rimraf basic-utils",
+    "build": "npx rimraf dist && npm run license && npx tsc -p src && npx rimraf dist/test.js dist/test.d.ts && npx minifier ./dist && npx rimraf ./dist/cli.d.ts && npm run build:types"
+  },
+  "devDependencies": {
+    "@bizhermit/minifier": "^1.0.3",
+    "cpx": "^1.5.0",
+    "license-checker": "^25.0.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4"
+  },
+  "keywords": [
+    "bizhermit",
+    "utils"
+  ]
+}
