@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["../basic-utils/**/*.ts", "../basic-utils/**/*.tsx"],
+  "include": ["../@bizhermit/basic-utils/**/*.ts", "../@bizhermit/basic-utils/**/*.tsx"],
   "compilerOptions": {
     "outFile": "../dist/index.d.ts",
     "emitDeclarationOnly": true,

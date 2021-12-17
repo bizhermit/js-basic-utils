@@ -1,4 +1,4 @@
-declare module "basic-utils/dist/string-utils" {
+declare module "@bizhermit/basic-utils/dist/string-utils" {
     const StringUtils: {
         isString: (value: any) => value is string;
         isNull: (value: string | null | undefined) => value is null | undefined;
@@ -26,7 +26,7 @@ declare module "basic-utils/dist/string-utils" {
     };
     export default StringUtils;
 }
-declare module "basic-utils/dist/datetime-utils" {
+declare module "@bizhermit/basic-utils/dist/datetime-utils" {
     const DatetimeUtils: {
         getResetedTimeDate: () => Date;
         datetimeStr: () => string;
@@ -39,7 +39,7 @@ declare module "basic-utils/dist/datetime-utils" {
     };
     export default DatetimeUtils;
 }
-declare module "basic-utils/dist/number-utils" {
+declare module "@bizhermit/basic-utils/dist/number-utils" {
     const NumberUtils: {
         isNumber: (value: any) => value is number;
         isNull: (value: number | null | undefined) => value is null | undefined;
