@@ -5,11 +5,8 @@
   "bugs": {
     "email": "support@bizhermit.com"
   },
-  "author": "bizhermit.com <support@bizhermit.com> (https://bizhermit.com)",
+  "author": "Ryoichi Senda <rsenda@bizhermit.com> (https://bizhermit.com)",
   "homepage": "https://bizhermit.com",
-  "contributors": [
-    "Ryoichi Senda <rsenda@bizhermit.com> (https://bizhermit.com)"
-  ],
   "license": "MIT",
   "main": "dist",
   "types": "dist/index.d.ts",
