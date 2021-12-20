@@ -1,13 +1,9 @@
 {
-  "name": "@bizhermit/basic-utils",
-  "version": "1.0.1",
+  "name": "@biz-hermit/basic-utils",
+  "version": "0.0.0",
   "description": "basic types utilities",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bizhermit/basic-utils.git"
-  },
   "bugs": {
-    "url": "https://github.com/bizhermit/basic-utils/issues"
+    "email": "support@bizhermit.com"
   },
   "author": "bizhermit.com <support@bizhermit.com> (https://bizhermit.com)",
   "homepage": "https://bizhermit.com",
@@ -22,12 +18,12 @@
   ],
   "scripts": {
     "test": "node dist/test.js",
-    "license": "npx license-checker --production > LICENSE",
-    "build:types": "npx rimraf @bizhermit && npx cpx src/**/*.{ts,tsx} @bizhermit/basic-utils/dist && npx tsc -p src/tsconfig.types.json --emitDeclarationOnly && npx rimraf @bizhermit",
+    "license": "npx license-checker --production > AUTHORS",
+    "build:types": "npx rimraf @biz-hermit && npx cpx src/**/*.{ts,tsx} @biz-hermit/basic-utils/dist && npx tsc -p src/tsconfig.types.json --emitDeclarationOnly && npx rimraf @biz-hermit",
     "build": "npx rimraf dist && npm run license && npx tsc -p src && npx rimraf dist/test.js dist/test.d.ts && npx minifier ./dist && npx rimraf ./dist/cli.d.ts && npm run build:types"
   },
   "devDependencies": {
-    "@bizhermit/minifier": "^1.0.3",
+    "@biz-hermit/minifier": "^0.0.0",
     "cpx": "^1.5.0",
     "license-checker": "^25.0.1",
     "rimraf": "^3.0.2",
