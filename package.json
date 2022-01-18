@@ -20,6 +20,7 @@
     "build": "npx rimraf dist && npm run license && npx tsc -p src && npx rimraf dist/test.js dist/test.d.ts && npx minifier ./dist && npx rimraf ./dist/cli.d.ts && npm run build:types"
   },
   "devDependencies": {
+    "@bizhermit/minifier": "^1.0.0",
     "cpx": "^1.5.0",
     "license-checker": "^25.0.1",
     "rimraf": "^3.0.2",
@@ -28,8 +29,5 @@
   "keywords": [
     "bizhermit",
     "utils"
-  ],
-  "dependencies": {
-    "@bizhermit/minifier": "^1.0.0"
-  }
+  ]
 }
