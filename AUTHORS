@@ -1,8 +1,160 @@
-└─ @biz-hermit/basic-utils@0.0.0
+├─ @bizhermit/basic-utils@1.0.0
+│  ├─ licenses: MIT
+│  ├─ publisher: Ryoichi Senda
+│  ├─ email: rsenda@bizhermit.com
+│  ├─ url: https://bizhermit.com
+│  ├─ path: E:\bizhermit\npm\basic-utils
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\LICENSE
+├─ @bizhermit/minifier@1.0.0
+│  ├─ licenses: MIT
+│  ├─ publisher: Ryoichi Senda
+│  ├─ email: rsenda@bizhermit.com
+│  ├─ url: https://bizhermit.com
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\@bizhermit\minifier
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\@bizhermit\minifier\LICENSE
+├─ buffer-from@1.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/LinusU/buffer-from
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\buffer-from
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\buffer-from\LICENSE
+├─ camel-case@3.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/blakeembrey/camel-case
+│  ├─ publisher: Blake Embrey
+│  ├─ email: hello@blakeembrey.com
+│  ├─ url: http://blakeembrey.me
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\camel-case
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\camel-case\LICENSE
+├─ clean-css@4.2.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jakubpawlowicz/clean-css
+│  ├─ publisher: Jakub Pawlowicz
+│  ├─ email: contact@jakubpawlowicz.com
+│  ├─ url: http://twitter.com/jakubpawlowicz
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\clean-css
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\clean-css\LICENSE
+├─ commander@2.20.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/tj/commander.js
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\commander
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\commander\LICENSE
+├─ css-tree@2.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/csstree/csstree
+│  ├─ publisher: Roman Dvornov
+│  ├─ email: rdvornov@gmail.com
+│  ├─ url: https://github.com/lahmatiy
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\css-tree
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\css-tree\LICENSE
+├─ csso@5.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/css/csso
+│  ├─ publisher: Sergey Kryzhanovsky
+│  ├─ email: skryzhanovsky@ya.ru
+│  ├─ url: https://github.com/afelix
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\csso
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\csso\LICENSE
+├─ he@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mathiasbynens/he
+│  ├─ publisher: Mathias Bynens
+│  ├─ url: https://mathiasbynens.be/
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\he
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\he\LICENSE-MIT.txt
+├─ html-minifier@4.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/kangax/html-minifier
+│  ├─ publisher: Juriy "kangax" Zaytsev
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\html-minifier
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\html-minifier\LICENSE
+├─ lower-case@1.1.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/blakeembrey/lower-case
+│  ├─ publisher: Blake Embrey
+│  ├─ email: hello@blakeembrey.com
+│  ├─ url: http://blakeembrey.me
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\lower-case
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\lower-case\LICENSE
+├─ mdn-data@2.0.23
+│  ├─ licenses: CC0-1.0
+│  ├─ repository: https://github.com/mdn/data
+│  ├─ publisher: Mozilla Developer Network
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\mdn-data
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\mdn-data\LICENSE
+├─ no-case@2.3.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/blakeembrey/no-case
+│  ├─ publisher: Blake Embrey
+│  ├─ email: hello@blakeembrey.com
+│  ├─ url: http://blakeembrey.me
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\no-case
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\no-case\LICENSE
+├─ param-case@2.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/blakeembrey/param-case
+│  ├─ publisher: Blake Embrey
+│  ├─ email: hello@blakeembrey.com
+│  ├─ url: http://blakeembrey.me
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\param-case
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\param-case\LICENSE
+├─ relateurl@0.2.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/stevenvachon/relateurl
+│  ├─ publisher: Steven Vachon
+│  ├─ email: contact@svachon.com
+│  ├─ url: http://www.svachon.com/
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\relateurl
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\relateurl\license
+├─ source-map-js@1.0.1
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/7rulnik/source-map
+│  ├─ publisher: Valentin 7rulnik Semirulnik
+│  ├─ email: v7rulnik@gmail.com
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\source-map-js
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\source-map-js\LICENSE
+├─ source-map-support@0.5.21
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/evanw/node-source-map-support
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\source-map-support
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\source-map-support\LICENSE.md
+├─ source-map@0.6.1
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/mozilla/source-map
+│  ├─ publisher: Nick Fitzgerald
+│  ├─ email: nfitzgerald@mozilla.com
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\source-map
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\source-map\LICENSE
+├─ source-map@0.7.3
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/mozilla/source-map
+│  ├─ publisher: Nick Fitzgerald
+│  ├─ email: nfitzgerald@mozilla.com
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\terser\node_modules\source-map
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\terser\node_modules\source-map\LICENSE
+├─ terser@5.10.0
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/terser/terser
+│  ├─ publisher: Mihai Bazon
+│  ├─ email: mihai.bazon@gmail.com
+│  ├─ url: http://lisperator.net/
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\terser
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\terser\LICENSE
+├─ uglify-js@3.14.5
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/mishoo/UglifyJS
+│  ├─ publisher: Mihai Bazon
+│  ├─ email: mihai.bazon@gmail.com
+│  ├─ url: http://lisperator.net/
+│  ├─ path: E:\bizhermit\npm\basic-utils\node_modules\uglify-js
+│  └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\uglify-js\LICENSE
+└─ upper-case@1.1.3
    ├─ licenses: MIT
-   ├─ publisher: Ryoichi Senda
-   ├─ email: rsenda@bizhermit.com
-   ├─ url: https://bizhermit.com
-   ├─ path: E:\bizhermit\npm\basic-utils
-   └─ licenseFile: E:\bizhermit\npm\basic-utils\LICENSE
+   ├─ repository: https://github.com/blakeembrey/upper-case
+   ├─ publisher: Blake Embrey
+   ├─ email: hello@blakeembrey.com
+   ├─ url: http://blakeembrey.me
+   ├─ path: E:\bizhermit\npm\basic-utils\node_modules\upper-case
+   └─ licenseFile: E:\bizhermit\npm\basic-utils\node_modules\upper-case\LICENSE
 
