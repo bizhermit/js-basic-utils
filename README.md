@@ -82,7 +82,7 @@ valueがIPv6アドレスのフォーマットであるかどうかを返しま�
 #### generateUuidV4() => string
 UUID Ver4を生成します。
 
-#### isUuidV4() => boolean
+#### isUuidV4(value: string) => boolean
 UUID Ver4であるかどうかを返します。
 
 ---
