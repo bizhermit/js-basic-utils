@@ -5,17 +5,6 @@ const padding = (val: number, paddingStr: string = "00") => {
 }
 
 const DatetimeUtils = {
-    getResetedTimeDate: () => {
-        return DatetimeUtils.resetTime(new Date());
-    },
-    datetimeStr: () => {
-        const d = new Date();
-        return padding(d.getFullYear(), "0000")
-            + padding(d.getMonth()+1)
-            + padding(d.getDate())
-            + padding(d.getHours())
-            + padding(d.getMinutes());
-    },
     isValidNumber: (yearNum: any, monthNum: any, dayNum: any) => {
         if (yearNum == null || monthNum == null || dayNum == null) return false;
         const d = new Date(Number(yearNum), Number(monthNum) - 1, Number(dayNum));
@@ -86,6 +75,14 @@ const DatetimeUtils = {
             .replace("ss", ("0" + String(sNum)).slice(-2))
             .replace("s", String(sNum));
     },
+    datetimeStr: () => {
+        const d = new Date();
+        return padding(d.getFullYear(), "0000")
+            + padding(d.getMonth()+1)
+            + padding(d.getDate())
+            + padding(d.getHours())
+            + padding(d.getMinutes());
+    },
     copy: (date: Date) => {
         return new Date(date);
     },
@@ -96,6 +93,9 @@ const DatetimeUtils = {
         date.setSeconds(0);
         date.setMilliseconds(0);
         return date;
-    }
+    },
+    getResetedTimeDate: () => {
+        return DatetimeUtils.resetTime(new Date());
+    },
 };
 export default DatetimeUtils;

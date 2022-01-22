@@ -16,6 +16,7 @@ declare module "@bizhermit/basic-utils/dist/string-utils" {
         isHalfWidthKatakana: (value: string) => boolean;
         isHiragana: (value: string) => boolean;
         isKatakana: (value: string) => boolean;
+        isFullOrHalfWidthKatakana: (value: string) => boolean;
         isInteger: (value: string) => boolean;
         isPhoneNumber: (value: string) => boolean;
         isPostalCode: (value: string) => boolean;
@@ -23,12 +24,12 @@ declare module "@bizhermit/basic-utils/dist/string-utils" {
         isIpv4Address: (value: string) => boolean;
         isIpv6Address: (value: string) => boolean;
         generateUuidV4: () => string;
+        isUuidV4: (value: string) => boolean;
     };
     export default StringUtils;
 }
 declare module "@bizhermit/basic-utils/dist/datetime-utils" {
     const DatetimeUtils: {
-        getResetedTimeDate: () => Date;
         datetimeStr: () => string;
         isValidNumber: (yearNum: any, monthNum: any, dayNum: any) => boolean;
         getDateByYMD: (yearNum: any, monthNum: any, dayNum: any) => Date;
@@ -36,6 +37,7 @@ declare module "@bizhermit/basic-utils/dist/datetime-utils" {
         convertDateToString: (date: Date, format: string) => string;
         copy: (date: Date) => Date;
         resetTime: (date: Date) => Date;
+        getResetedTimeDate: () => Date;
     };
     export default DatetimeUtils;
 }

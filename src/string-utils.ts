@@ -50,6 +50,9 @@ const StringUtils = {
     isKatakana: (value: string) => {
         return /^[ァ-ヶ]+$/.test(value);
     },
+    isFullOrHalfWidthKatakana: (value: string) => {
+        return /^[｡-ﾟ+ァ-ヶ]+$/.test(value);
+    },
     isInteger: (value: string) => {
         return /[+-]?(0|[1-9]+\\d*)/.test(value);
     },
@@ -90,6 +93,9 @@ const StringUtils = {
             }
         }
         return chars.join("");
+    },
+    isUuidV4: (value: string) => {
+        return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(value);
     },
 };
 export default StringUtils;

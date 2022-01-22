@@ -15,6 +15,7 @@ declare const StringUtils: {
     isHalfWidthKatakana: (value: string) => boolean;
     isHiragana: (value: string) => boolean;
     isKatakana: (value: string) => boolean;
+    isFullOrHalfWidthKatakana: (value: string) => boolean;
     isInteger: (value: string) => boolean;
     isPhoneNumber: (value: string) => boolean;
     isPostalCode: (value: string) => boolean;
@@ -22,5 +23,6 @@ declare const StringUtils: {
     isIpv4Address: (value: string) => boolean;
     isIpv6Address: (value: string) => boolean;
     generateUuidV4: () => string;
+    isUuidV4: (value: string) => boolean;
 };
 export default StringUtils;

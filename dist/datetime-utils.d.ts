@@ -1,5 +1,4 @@
 declare const DatetimeUtils: {
-    getResetedTimeDate: () => Date;
     datetimeStr: () => string;
     isValidNumber: (yearNum: any, monthNum: any, dayNum: any) => boolean;
     getDateByYMD: (yearNum: any, monthNum: any, dayNum: any) => Date;
@@ -7,5 +6,6 @@ declare const DatetimeUtils: {
     convertDateToString: (date: Date, format: string) => string;
     copy: (date: Date) => Date;
     resetTime: (date: Date) => Date;
+    getResetedTimeDate: () => Date;
 };
 export default DatetimeUtils;
