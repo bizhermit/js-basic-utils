@@ -34,6 +34,9 @@
   },
   "keywords": [
     "bizhermit",
-    "utils"
+    "utils",
+    "string",
+    "number",
+    "datetime"
   ]
 }
