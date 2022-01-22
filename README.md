@@ -114,7 +114,7 @@ valueの少数部の桁数（少数第n位）を返します。
 
 ## DatetimeUtils
 
-#### isValidNumber(yearNum: any, monthNum: any, dayNum: any) => boolean;
+#### isValidNumber(yearNum: any, monthNum: any, dayNum: any) => boolean
 年・月・日の値が日付の値として適切かどうかを返します。  
 ```ts
 isValidNumber(2022, 1, 1) => true // 2022/1/1
@@ -132,7 +132,7 @@ strDate型に変換した値を返します。
   - 数字八桁（yyyyMMdd）
   - 年月日で区切られている（yyyy年MM月dd日）（yyyy年M月d日）
 
-#### convertDateToString(date: Date, format: string) => string;
+#### convertDateToString(date: Date, format: string) => string
 dateをフォーマットに基づいて文字列に変換した値を返します。
   - yyyy: 西暦
   - yy: 西暦下二桁
