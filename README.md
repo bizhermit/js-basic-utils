@@ -102,10 +102,13 @@ valueを三桁区切りの文字列に変換します。valueがnullまたはund
 value（string）から三桁区切りのコンマを除去した数値を返します。
 
 #### add(value1: number, value2: number) => number
-value1にvalue2を加算した値を返します。浮動小数点演算に対応しています。
+value1にvalue2を加算した値を返します。浮動小数点を含む演算に対応しています。
+
+#### adds(...values: Array<number>) => number
+valuesを合算した値を返します。浮動小数点を含む演算に対応しています。
 
 #### minus(value1: number, value2: number) => number
-value1からvalue2を減算した値を返します。浮動小数点演算に対応しています。
+value1からvalue2を減算した値を返します。浮動小数点を含む演算に対応しています。
 
 #### getFloatPosition(value: number) => number
 valueの少数部の桁数（少数第n位）を返します。

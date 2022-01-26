@@ -22,6 +22,13 @@ const NumberUtils = {
         const maxDotPos = Math.max(dotPos1, dotPos2);
         return (Number((String(value1) + "0".repeat(maxDotPos - dotPos1)).replace(".", "")) + Number((String(value2) + "0".repeat(maxDotPos - dotPos2)).replace(".", ""))) / Math.pow(10, maxDotPos);
     },
+    adds: (...values: Array<number>) => {
+        if (values.length === 0) return 0;
+        if (values.length === 1) return values[0];
+        let ret = values[0];
+        for (let i = 1, il = values.length; i < il; i++) ret = NumberUtils.add(ret, values[i]);
+        return ret;
+    },
     minus: (value1: number, value2: number) => {
         if (value2 == null) return value1;
         if (value1 == null) return -value2;
