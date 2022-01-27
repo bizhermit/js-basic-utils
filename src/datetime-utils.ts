@@ -97,5 +97,15 @@ const DatetimeUtils = {
     getResetedTimeDate: () => {
         return DatetimeUtils.resetTime(new Date());
     },
+    getDaysDiff: (before: Date, after: Date) => {
+        if (before == null || after == null) return 0;
+        const b = DatetimeUtils.resetTime(new Date(before)).getTime();
+        const a = DatetimeUtils.resetTime(new Date(after)).getTime();
+        return (a - b) / 86400000;
+    },
+    getDays: (date1: Date, date2: Date) => {
+        if (date1 == null && date2 == null) return 0;
+        return Math.abs(DatetimeUtils.getDaysDiff(date1, date2)) + 1;
+    },
 };
 export default DatetimeUtils;

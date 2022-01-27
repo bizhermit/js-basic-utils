@@ -19,7 +19,7 @@
     "dist"
   ],
   "scripts": {
-    "try": "node dist/test.js",
+    "try": "node test",
     "license": "npx license-checker --production > AUTHORS",
     "build:types": "npx rimraf @bizhermit && npx cpx src/**/*.{ts,tsx} @bizhermit/basic-utils/dist && npx tsc -p src/tsconfig.types.json --emitDeclarationOnly && npx rimraf @bizhermit",
     "build": "npx rimraf dist && npm run license && npx tsc -p src && npx rimraf dist/test.js dist/test.d.ts && npx minifier ./dist && npx rimraf ./dist/cli.d.ts && npm run build:types",

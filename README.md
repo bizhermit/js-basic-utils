@@ -161,3 +161,9 @@ dateの時・分・秒・ミリ秒を0にした値を返します。
 
 #### getResetedTimeDate() => Date
 時・分・秒・ミリ秒を0にした現在日付を返します。
+
+#### getDaysDiff(before: Date, after: Date) => number
+二つの日付の日数差を返します。
+
+#### getDays(date1: Date, date2: Date) => number
+二つの日付の日数を返します。
