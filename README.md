@@ -131,7 +131,7 @@ isValidNumber(2022, 0, 1) => false // 2021/12/1
 年・月・日の値からDateを返します。
 
 #### convertStringToDate(str: string | null | undefined, whenFailedValue?: Date) => Date
-strDate型に変換した値を返します。変換に失敗した場合はwhenFailedValue（初期値：new Date()）を返します。  
+strDate型に変換した値を返します。変換に失敗した場合はwhenFailedValueを返します。  
 対応フォーマットは以下の通り。
   - ハイフン（-）で区切られている（yyyy-MM-dd）（yyyy-M-d）
   - スラッシュ（/）で区切られている（yyyy/MM/dd）（yyyy/M/d）
@@ -139,7 +139,7 @@ strDate型に変換した値を返します。変換に失敗した場合はwhen
   - 年月日で区切られている（yyyy年MM月dd日）（yyyy年M月d日）
 
 #### convertToDate(date: string | number | Date | null | undefined, whenFailedValue?: Date) => Date
-Dateに変換した値を返します。変換に失敗した場合はwhenFailedValue（初期値：new Date()）を返します。  
+Dateに変換した値を返します。変換に失敗した場合はwhenFailedValueを返します。  
 stringおよびnumberの場合はconvertStringToDateに基づいて変換されます。
 
 #### convertDateToString(date: Date | null | undefined, format: string) => string
