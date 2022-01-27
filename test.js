@@ -3,6 +3,8 @@ const NumberUtils = require("./dist/number-utils").default;
 const DatetimeUtils = require("./dist/datetime-utils").default;
 
 console.log(StringUtils.isUuidV4(StringUtils.generateUuidV4()));
+console.log(StringUtils.join(":", "hoge", "fuga", "hage"));
+
 console.log(NumberUtils.adds(1.111, 2.222, 3.333, 4.444, 5.555));
 
 const beforeDate = new Date();

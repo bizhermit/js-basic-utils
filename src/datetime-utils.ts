@@ -13,7 +13,7 @@ const DatetimeUtils = {
     getDateByYMD: (yearNum: unknown, monthNum: unknown, dayNum: unknown) => {
         return new Date(Number(yearNum), Number(monthNum) - 1, Number(dayNum));
     },
-    convertStringToDate: (str: string | null | undefined, whenFailedValue: Date = new Date()) => {
+    convertStringToDate: (str: string | null | undefined, whenFailedValue?: Date | null) => {
         if (StringUtils.isNullOrEmpty(str)) return whenFailedValue;
         const ev = new Date();
         if (str.indexOf("-") > 0) {
@@ -54,7 +54,7 @@ const DatetimeUtils = {
         }
         return whenFailedValue;
     },
-    convertToDate: (date: string | number | Date | null | undefined, whenFailedValue = new Date()) => {
+    convertToDate: (date: string | number | Date | null | undefined, whenFailedValue?: Date | null) => {
         if (date == null) return whenFailedValue;
         if (typeof date === "string" || typeof date === "number") return DatetimeUtils.convertStringToDate(String(date), whenFailedValue);
         return new Date(date);
@@ -89,7 +89,7 @@ const DatetimeUtils = {
             + padding(d.getMinutes());
     },
     copy: (date: Date | null | undefined) => {
-        if (date == null) return new Date();
+        if (date == null) return date;
         return new Date(date);
     },
     resetTime: (date: Date | null | undefined) => {

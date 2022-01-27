@@ -8,6 +8,7 @@ declare module "@bizhermit/basic-utils/dist/string-utils" {
         notNull: (value: string | null | undefined, whenNullValue: string) => string;
         notNullOrEmpty: (value: string | null | undefined, whenNullOrEmptyValue: string) => string;
         contains: (value: string | null | undefined, search: string) => boolean;
+        join: (joinStr: string, ...values: Array<string | null | undefined>) => string;
         isHalfWidthNumeric: (value: string | null | undefined) => boolean;
         isHalfWidthAlphabet: (value: string | null | undefined) => boolean;
         isHalfWidthSymbols: (value: string | null | undefined) => boolean;
@@ -32,11 +33,11 @@ declare module "@bizhermit/basic-utils/dist/datetime-utils" {
     const DatetimeUtils: {
         isValidNumber: (yearNum: unknown, monthNum: unknown, dayNum: unknown) => boolean;
         getDateByYMD: (yearNum: unknown, monthNum: unknown, dayNum: unknown) => Date;
-        convertStringToDate: (str: string | null | undefined, whenFailedValue?: Date) => Date;
-        convertToDate: (date: string | number | Date | null | undefined, whenFailedValue?: Date) => Date;
+        convertStringToDate: (str: string | null | undefined, whenFailedValue?: Date | null | undefined) => Date | null | undefined;
+        convertToDate: (date: string | number | Date | null | undefined, whenFailedValue?: Date | null | undefined) => Date | null | undefined;
         convertDateToString: (date: Date | null | undefined, format?: string) => string;
         datetimeStr: () => string;
-        copy: (date: Date | null | undefined) => Date;
+        copy: (date: Date | null | undefined) => Date | null | undefined;
         resetTime: (date: Date | null | undefined) => Date | null | undefined;
         getResetedTimeDate: () => Date | null | undefined;
         getDaysDiff: (before: Date | null | undefined, after: Date | null | undefined) => number;
@@ -50,9 +51,9 @@ declare module "@bizhermit/basic-utils/dist/number-utils" {
         isNull: (value: number | null | undefined) => value is null | undefined;
         thousandsSeparator: (value: number | null | undefined, whenNullValue?: string) => string;
         removeThousandsSeparator: (value: string | null | undefined, whenNullOrEmptyValue?: number) => number;
-        add: (value1: number | null | undefined, value2: number | null | undefined) => number | null | undefined;
-        adds: (...values: Array<number | null | undefined>) => number | null | undefined;
-        minus: (value1: number | null | undefined, value2: number | null | undefined) => number | null | undefined;
+        add: (value1: number | null | undefined, value2: number | null | undefined) => number;
+        adds: (...values: Array<number | null | undefined>) => number;
+        minus: (value1: number | null | undefined, value2: number | null | undefined) => number;
         getFloatPosition: (value: number | null | undefined) => number;
     };
     export default NumberUtils;

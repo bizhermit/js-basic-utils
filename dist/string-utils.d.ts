@@ -7,6 +7,7 @@ declare const StringUtils: {
     notNull: (value: string | null | undefined, whenNullValue: string) => string;
     notNullOrEmpty: (value: string | null | undefined, whenNullOrEmptyValue: string) => string;
     contains: (value: string | null | undefined, search: string) => boolean;
+    join: (joinStr: string, ...values: Array<string | null | undefined>) => string;
     isHalfWidthNumeric: (value: string | null | undefined) => boolean;
     isHalfWidthAlphabet: (value: string | null | undefined) => boolean;
     isHalfWidthSymbols: (value: string | null | undefined) => boolean;

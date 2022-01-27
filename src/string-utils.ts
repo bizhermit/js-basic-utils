@@ -26,6 +26,16 @@ const StringUtils = {
         if (StringUtils.isNotNullOrEmpty(value)) return value.indexOf(search) != -1;
         return false;
     },
+    join: (joinStr: string, ...values: Array<string | null | undefined>) => {
+        let ret = "";
+        const js = joinStr ?? " ";
+        values.forEach(v => {
+            if (StringUtils.isNullOrEmpty(v)) return;
+            if (ret.length > 0) ret += js;
+            ret += v;
+        });
+        return ret;
+    },
     isHalfWidthNumeric: (value: string | null | undefined) => {
         if (value == null) return false;
         return /^[0-9]+$/.test(value);
