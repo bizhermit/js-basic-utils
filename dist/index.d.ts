@@ -1,6 +1,6 @@
 declare module "@bizhermit/basic-utils/dist/string-utils" {
     const StringUtils: {
-        isString: (value: any) => value is string;
+        isString: (value: unknown) => value is string;
         isNull: (value: string | null | undefined) => value is null | undefined;
         isNullOrEmpty: (value: string | null | undefined) => value is null | undefined;
         isNotNull: (value: string | null | undefined) => value is string;
@@ -8,51 +8,52 @@ declare module "@bizhermit/basic-utils/dist/string-utils" {
         notNull: (value: string | null | undefined, whenNullValue: string) => string;
         notNullOrEmpty: (value: string | null | undefined, whenNullOrEmptyValue: string) => string;
         contains: (value: string | null | undefined, search: string) => boolean;
-        isHalfWidthNumeric: (value: string) => boolean;
-        isHalfWidthAlphabet: (value: string) => boolean;
-        isHalfWidthSymbols: (value: string) => boolean;
-        isHalfWidthAlphanumeric: (value: string) => boolean;
-        isHalfWidthAlphanumericAndSymbols: (value: string) => boolean;
-        isHalfWidthKatakana: (value: string) => boolean;
-        isHiragana: (value: string) => boolean;
-        isKatakana: (value: string) => boolean;
-        isFullOrHalfWidthKatakana: (value: string) => boolean;
-        isInteger: (value: string) => boolean;
-        isPhoneNumber: (value: string) => boolean;
-        isPostalCode: (value: string) => boolean;
-        isMailAddress: (value: string) => boolean;
-        isIpv4Address: (value: string) => boolean;
-        isIpv6Address: (value: string) => boolean;
+        isHalfWidthNumeric: (value: string | null | undefined) => boolean;
+        isHalfWidthAlphabet: (value: string | null | undefined) => boolean;
+        isHalfWidthSymbols: (value: string | null | undefined) => boolean;
+        isHalfWidthAlphanumeric: (value: string | null | undefined) => boolean;
+        isHalfWidthAlphanumericAndSymbols: (value: string | null | undefined) => boolean;
+        isHalfWidthKatakana: (value: string | null | undefined) => boolean;
+        isHiragana: (value: string | null | undefined) => boolean;
+        isKatakana: (value: string | null | undefined) => boolean;
+        isFullOrHalfWidthKatakana: (value: string | null | undefined) => boolean;
+        isInteger: (value: string | null | undefined) => boolean;
+        isPhoneNumber: (value: string | null | undefined) => boolean;
+        isPostalCode: (value: string | null | undefined) => boolean;
+        isMailAddress: (value: string | null | undefined) => boolean;
+        isIpv4Address: (value: string | null | undefined) => boolean;
+        isIpv6Address: (value: string | null | undefined) => boolean;
         generateUuidV4: () => string;
-        isUuidV4: (value: string) => boolean;
+        isUuidV4: (value: string | null | undefined) => boolean;
     };
     export default StringUtils;
 }
 declare module "@bizhermit/basic-utils/dist/datetime-utils" {
     const DatetimeUtils: {
-        isValidNumber: (yearNum: any, monthNum: any, dayNum: any) => boolean;
-        getDateByYMD: (yearNum: any, monthNum: any, dayNum: any) => Date;
-        convertStringToDate: (str: string) => Date | null;
-        convertDateToString: (date: Date, format?: string) => string;
+        isValidNumber: (yearNum: unknown, monthNum: unknown, dayNum: unknown) => boolean;
+        getDateByYMD: (yearNum: unknown, monthNum: unknown, dayNum: unknown) => Date;
+        convertStringToDate: (str: string | null | undefined, whenFailedValue?: Date) => Date;
+        convertToDate: (date: string | number | Date | null | undefined, whenFailedValue?: Date) => Date;
+        convertDateToString: (date: Date | null | undefined, format?: string) => string;
         datetimeStr: () => string;
-        copy: (date: Date) => Date;
-        resetTime: (date: Date) => Date;
-        getResetedTimeDate: () => Date;
-        getDaysDiff: (before: Date, after: Date) => number;
-        getDays: (date1: Date, date2: Date) => number;
+        copy: (date: Date | null | undefined) => Date;
+        resetTime: (date: Date | null | undefined) => Date | null | undefined;
+        getResetedTimeDate: () => Date | null | undefined;
+        getDaysDiff: (before: Date | null | undefined, after: Date | null | undefined) => number;
+        getDays: (date1: Date | null | undefined, date2: Date | null | undefined) => number;
     };
     export default DatetimeUtils;
 }
 declare module "@bizhermit/basic-utils/dist/number-utils" {
     const NumberUtils: {
-        isNumber: (value: any) => value is number;
+        isNumber: (value: unknown) => value is number;
         isNull: (value: number | null | undefined) => value is null | undefined;
-        thousandsSeparator: (value: number, whenNullValue?: string) => string;
-        removeThousandsSeparator: (value: string, whenNullOrEmptyValue?: number) => number;
-        add: (value1: number, value2: number) => number;
-        adds: (...values: Array<number>) => number;
-        minus: (value1: number, value2: number) => number;
-        getFloatPosition: (value: number) => number;
+        thousandsSeparator: (value: number | null | undefined, whenNullValue?: string) => string;
+        removeThousandsSeparator: (value: string | null | undefined, whenNullOrEmptyValue?: number) => number;
+        add: (value1: number | null | undefined, value2: number | null | undefined) => number | null | undefined;
+        adds: (...values: Array<number | null | undefined>) => number | null | undefined;
+        minus: (value1: number | null | undefined, value2: number | null | undefined) => number | null | undefined;
+        getFloatPosition: (value: number | null | undefined) => number;
     };
     export default NumberUtils;
 }

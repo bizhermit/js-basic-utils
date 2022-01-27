@@ -1,5 +1,5 @@
 const StringUtils = {
-    isString: (value: any): value is string => {
+    isString: (value: unknown): value is string => {
         return typeof value === "string";
     },
     isNull: (value: string | null | undefined): value is null | undefined => {
@@ -26,37 +26,48 @@ const StringUtils = {
         if (StringUtils.isNotNullOrEmpty(value)) return value.indexOf(search) != -1;
         return false;
     },
-    isHalfWidthNumeric: (value: string) => {
+    isHalfWidthNumeric: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[0-9]+$/.test(value);
     },
-    isHalfWidthAlphabet: (value: string) => {
+    isHalfWidthAlphabet: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[a-zA-Z]+$/.test(value);
     },
-    isHalfWidthSymbols: (value: string) => {
+    isHalfWidthSymbols: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[!-/:-@¥[-`{-~]+$/.test(value);
     },
-    isHalfWidthAlphanumeric: (value: string) => {
+    isHalfWidthAlphanumeric: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[a-zA-Z0-9]+$/.test(value);
     },
-    isHalfWidthAlphanumericAndSymbols: (value: string) => {
+    isHalfWidthAlphanumericAndSymbols: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/.test(value);
     },
-    isHalfWidthKatakana: (value: string) => {
+    isHalfWidthKatakana: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[｡-ﾟ+]+$/.test(value);
     },
-    isHiragana: (value: string) => {
+    isHiragana: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[ぁ-ゞ]+$/.test(value);
     },
-    isKatakana: (value: string) => {
+    isKatakana: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[ァ-ヶ]+$/.test(value);
     },
-    isFullOrHalfWidthKatakana: (value: string) => {
+    isFullOrHalfWidthKatakana: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[｡-ﾟ+ァ-ヶ]+$/.test(value);
     },
-    isInteger: (value: string) => {
+    isInteger: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /[+-]?(0|[1-9]+\\d*)/.test(value);
     },
-    isPhoneNumber: (value: string) => {
+    isPhoneNumber: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^0\\d-\\d{4}-\\d{4}$/.test(value)
             || /^0\\d{3}-\\d{2}-\\d{4}$/.test(value)
             || /^0\\d{2}-\\d{3}-\\d{4}$/.test(value)
@@ -66,16 +77,20 @@ const StringUtils = {
             || /^\\(0\\d{3}\\)\\d{2}-\\d{4}$/.test(value)
             || /^0120-\\d{3}-\\d{3}$/.test(value);
     },
-    isPostalCode: (value: string) => {
+    isPostalCode: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[0-9]{3}-[0-9]{4}$/.test(value) || /^[0-9]{7}$/.test(value);
     },
-    isMailAddress: (value: string) => {
+    isMailAddress: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/.test(value);
     },
-    isIpv4Address: (value: string) => {
+    isIpv4Address: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$/.test(value);
     },
-    isIpv6Address: (value: string) => {
+    isIpv6Address: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/.test(value);
     },
     generateUuidV4: () => {
@@ -94,7 +109,8 @@ const StringUtils = {
         }
         return chars.join("");
     },
-    isUuidV4: (value: string) => {
+    isUuidV4: (value: string | null | undefined) => {
+        if (value == null) return false;
         return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(value);
     },
 };

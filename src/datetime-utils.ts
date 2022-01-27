@@ -5,17 +5,17 @@ const padding = (val: number, paddingStr: string = "00") => {
 }
 
 const DatetimeUtils = {
-    isValidNumber: (yearNum: any, monthNum: any, dayNum: any) => {
+    isValidNumber: (yearNum: unknown, monthNum: unknown, dayNum: unknown) => {
         if (yearNum == null || monthNum == null || dayNum == null) return false;
         const d = new Date(Number(yearNum), Number(monthNum) - 1, Number(dayNum));
         return d.getFullYear() === Number(yearNum) && d.getMonth() + 1 === Number(monthNum) && d.getDate() === Number(dayNum);
     },
-    getDateByYMD: (yearNum: any, monthNum: any, dayNum: any) => {
+    getDateByYMD: (yearNum: unknown, monthNum: unknown, dayNum: unknown) => {
         return new Date(Number(yearNum), Number(monthNum) - 1, Number(dayNum));
     },
-    convertStringToDate: (str: string) => {
+    convertStringToDate: (str: string | null | undefined, whenFailedValue: Date = new Date()) => {
+        if (StringUtils.isNullOrEmpty(str)) return whenFailedValue;
         const ev = new Date();
-        if (StringUtils.isNullOrEmpty(str)) return null;
         if (str.indexOf("-") > 0) {
             const vals = str.split("-");
             if (vals.length !== 3) return ev;
@@ -52,9 +52,14 @@ const DatetimeUtils = {
             if (!DatetimeUtils.isValidNumber(yStr, mStr, 1)) return ev;
             return DatetimeUtils.getDateByYMD(yStr, mStr, 1);
         }
-        return null;
+        return whenFailedValue;
     },
-    convertDateToString: (date: Date, format: string = "yyyy-MM-dd") => {
+    convertToDate: (date: string | number | Date | null | undefined, whenFailedValue = new Date()) => {
+        if (date == null) return whenFailedValue;
+        if (typeof date === "string" || typeof date === "number") return DatetimeUtils.convertStringToDate(String(date), whenFailedValue);
+        return new Date(date);
+    },
+    convertDateToString: (date: Date | null | undefined, format: string = "yyyy-MM-dd") => {
         if (date == null || StringUtils.isNullOrEmpty(format)) return "";
         const yNum = date.getFullYear();
         const mNum = date.getMonth() + 1;
@@ -83,10 +88,11 @@ const DatetimeUtils = {
             + padding(d.getHours())
             + padding(d.getMinutes());
     },
-    copy: (date: Date) => {
+    copy: (date: Date | null | undefined) => {
+        if (date == null) return new Date();
         return new Date(date);
     },
-    resetTime: (date: Date) => {
+    resetTime: (date: Date | null | undefined) => {
         if (date == null) return date;
         date.setHours(0);
         date.setMinutes(0);
@@ -97,13 +103,13 @@ const DatetimeUtils = {
     getResetedTimeDate: () => {
         return DatetimeUtils.resetTime(new Date());
     },
-    getDaysDiff: (before: Date, after: Date) => {
+    getDaysDiff: (before: Date | null | undefined, after: Date | null | undefined) => {
         if (before == null || after == null) return 0;
-        const b = DatetimeUtils.resetTime(new Date(before)).getTime();
-        const a = DatetimeUtils.resetTime(new Date(after)).getTime();
-        return (a - b) / 86400000;
+        const b = Math.floor(before.getTime() / 86400000);
+        const a = Math.floor(after.getTime() / 86400000);
+        return a - b;
     },
-    getDays: (date1: Date, date2: Date) => {
+    getDays: (date1: Date | null | undefined, date2: Date | null | undefined) => {
         if (date1 == null && date2 == null) return 0;
         return Math.abs(DatetimeUtils.getDaysDiff(date1, date2)) + 1;
     },
