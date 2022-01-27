@@ -54,7 +54,7 @@ const DatetimeUtils = {
         }
         return null;
     },
-    convertDateToString: (date: Date, format: string) => {
+    convertDateToString: (date: Date, format: string = "yyyy-MM-dd") => {
         if (date == null || StringUtils.isNullOrEmpty(format)) return "";
         const yNum = date.getFullYear();
         const mNum = date.getMonth() + 1;
