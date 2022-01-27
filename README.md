@@ -136,7 +136,7 @@ strDate型に変換した値を返します。
   - 年月日で区切られている（yyyy年MM月dd日）（yyyy年M月d日）
 
 #### convertDateToString(date: Date, format: string) => string
-dateをフォーマットに基づいて文字列に変換した値を返します。
+dateをフォーマットに基づいて文字列に変換した値を返します。未指定の場合は"yyyy-MM-dd"です。
   - yyyy: 西暦
   - yy: 西暦下二桁
   - MM: 月（ゼロ埋め二桁）
