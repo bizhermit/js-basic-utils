@@ -160,10 +160,10 @@ dateをフォーマットに基づいて文字列に変換した値を返しま�
 #### datetimeStr() => string
 現在時刻をフォーマット：yyyyMMddHHmmの文字列で取得します。
 
-#### copy(date: Date | null | undefined) => Date
+#### copy(date: Date) => Date
 コピーした日付オブジェクトを返します。
 
-#### resetTime(date: Date | null | undefined) => Date
+#### resetTime(date: Date) => Date
 dateの時・分・秒・ミリ秒を0にした値を返します。
 
 #### getResetedTimeDate() => Date

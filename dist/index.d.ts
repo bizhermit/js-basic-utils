@@ -37,9 +37,9 @@ declare module "@bizhermit/basic-utils/dist/datetime-utils" {
         convertToDate: (date: string | number | Date | null | undefined, whenFailedValue?: Date | null | undefined) => Date | null | undefined;
         convertDateToString: (date: Date | null | undefined, format?: string) => string;
         datetimeStr: () => string;
-        copy: (date: Date | null | undefined) => Date | null | undefined;
-        resetTime: (date: Date | null | undefined) => Date | null | undefined;
-        getResetedTimeDate: () => Date | null | undefined;
+        copy: (date: Date) => Date;
+        resetTime: (date: Date) => Date;
+        getResetedTimeDate: () => Date;
         getDaysDiff: (before: Date | null | undefined, after: Date | null | undefined) => number;
         getDays: (date1: Date | null | undefined, date2: Date | null | undefined) => number;
     };
