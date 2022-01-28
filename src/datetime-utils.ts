@@ -88,11 +88,11 @@ const DatetimeUtils = {
             + padding(d.getHours())
             + padding(d.getMinutes());
     },
-    copy: (date: Date | null | undefined) => {
+    copy: (date: Date) => {
         if (date == null) return date;
         return new Date(date);
     },
-    resetTime: (date: Date | null | undefined) => {
+    resetTime: (date: Date) => {
         if (date == null) return date;
         date.setHours(0);
         date.setMinutes(0);
