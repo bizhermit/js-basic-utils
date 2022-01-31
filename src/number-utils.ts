@@ -41,6 +41,21 @@ const NumberUtils = {
         const str = String(value);
         if (str.indexOf(".") < 0) return 0;
         return str.length - 1 - str.lastIndexOf(".");
-    }
+    },
+    round: (value: number, float = 0) => {
+        if (value == null) return value;
+        const denom = Math.pow(10, float);
+        return Math.round(value * denom) / denom;
+    },
+    ceil: (value: number, float = 0) => {
+        if (value == null) return value;
+        const denom = Math.pow(10, float);
+        return Math.ceil(value * denom) / denom;
+    },
+    floor: (value: number, float = 0) => {
+        if (value == null) return value;
+        const denom = Math.pow(10, float);
+        return Math.floor(value * denom) / denom;
+    },
 };
 export default NumberUtils;

@@ -6,6 +6,10 @@ console.log(StringUtils.isUuidV4(StringUtils.generateUuidV4()));
 console.log(StringUtils.join(":", "hoge", "fuga", "hage"));
 
 console.log(NumberUtils.adds(1.111, 2.222, 3.333, 4.444, 5.555));
+const num = 10.5;
+console.log(NumberUtils.round(num));
+console.log(NumberUtils.ceil(num));
+console.log(NumberUtils.floor(num));
 
 const beforeDate = new Date();
 const afterDate = new Date(beforeDate);

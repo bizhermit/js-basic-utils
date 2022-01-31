@@ -7,5 +7,8 @@ declare const NumberUtils: {
     adds: (...values: Array<number | null | undefined>) => number;
     minus: (value1: number | null | undefined, value2: number | null | undefined) => number;
     getFloatPosition: (value: number | null | undefined) => number;
+    round: (value: number, float?: number) => number;
+    ceil: (value: number, float?: number) => number;
+    floor: (value: number, float?: number) => number;
 };
 export default NumberUtils;
