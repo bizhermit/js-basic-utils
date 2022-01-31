@@ -57,5 +57,22 @@ const NumberUtils = {
         const denom = Math.pow(10, float);
         return Math.floor(value * denom) / denom;
     },
+    average: (...values: Array<number | null | undefined>) => {
+        let sum = 0, denom = 0;
+        values.forEach(v => {
+            if (v == null) return;
+            sum = NumberUtils.add(sum, v);
+            denom++;
+        });
+        return sum / denom;
+    },
+    nullZeroAverage: (...values: Array<number | null | undefined>) => {
+        let sum = 0, denom = 0;
+        values.forEach(v => {
+            sum = NumberUtils.add(sum, v ?? 0);
+            denom++;
+        });
+        return sum / denom;
+    },
 };
 export default NumberUtils;

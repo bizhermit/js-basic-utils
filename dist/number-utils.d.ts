@@ -10,5 +10,7 @@ declare const NumberUtils: {
     round: (value: number, float?: number) => number;
     ceil: (value: number, float?: number) => number;
     floor: (value: number, float?: number) => number;
+    average: (...values: Array<number | null | undefined>) => number;
+    nullZeroAverage: (...values: Array<number | null | undefined>) => number;
 };
 export default NumberUtils;
