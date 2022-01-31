@@ -15,5 +15,14 @@ declare const DatetimeUtils: {
     getFirstDateAtYear: (date?: Date) => Date;
     getLastDateAtYear: (date?: Date) => Date;
     validContext: (before: Date | null | undefined, after: Date | null | undefined) => boolean;
+    addDay: (date: Date | undefined, add: number) => Date;
+    getPrevDate: (date?: Date) => Date;
+    getNextDate: (date?: Date) => Date;
+    getPrevWeekDate: (date?: Date) => Date;
+    getNextWeekDate: (date?: Date) => Date;
+    getPrevMonthDate: (date?: Date, sameYearMonth?: boolean) => Date;
+    getNextMonthDate: (date?: Date, sameYearMonth?: boolean) => Date;
+    getPrevYearDate: (date?: Date, sameYearMonth?: boolean) => Date;
+    getNextYearDate: (date?: Date, sameYearMonth?: boolean) => Date;
 };
 export default DatetimeUtils;

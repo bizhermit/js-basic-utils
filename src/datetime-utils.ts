@@ -144,24 +144,24 @@ const DatetimeUtils = {
     getNextWeekDate: (date = new Date()) => {
         return DatetimeUtils.addDay(date, 7);
     },
-    getPrevMonthDate: (date = new Date()) => {
+    getPrevMonthDate: (date = new Date(), sameYearMonth = false) => {
         const ret = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate())
-        if (ret.getDate() !== date.getDate()) ret.setDate(0);
+        if (sameYearMonth === true && ret.getDate() !== date.getDate()) ret.setDate(0);
         return ret;
     },
-    getNextMonthDate: (date = new Date()) => {
+    getNextMonthDate: (date = new Date(), sameYearMonth = false) => {
         const ret = new Date(date.getFullYear(), date.getMonth() + 1, date.getDate());;
-        if (ret.getDate() !== date.getDate()) ret.setDate(0);
+        if (sameYearMonth === true && ret.getDate() !== date.getDate()) ret.setDate(0);
         return ret;
     },
-    getPrevYearDate: (date = new Date()) => {
+    getPrevYearDate: (date = new Date(), sameYearMonth = false) => {
         const ret = new Date(date.getFullYear() - 1, date.getMonth(), date.getDate());;
-        if (ret.getDate() !== date.getDate()) ret.setDate(0);
+        if (sameYearMonth === true && ret.getDate() !== date.getDate()) ret.setDate(0);
         return ret;
     },
-    getNextYearDate: (date = new Date()) => {
+    getNextYearDate: (date = new Date(), sameYearMonth = false) => {
         const ret = new Date(date.getFullYear() + 1, date.getMonth(), date.getDate());
-        if (ret.getDate() !== date.getDate()) ret.setDate(0);
+        if (sameYearMonth === true && ret.getDate() !== date.getDate()) ret.setDate(0);
         return ret;
     },
 };

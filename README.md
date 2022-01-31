@@ -207,6 +207,33 @@ date（未指定の場合現在日）の年末日を返します。
 beforeとafterの前後関係が適切かどうかを返します。  
 ※ beforeとafterが同日の場合はtrueを返します。
 
+#### addDay(date: Date | undefined, add: number) => Date
+date（未指定の場合現在日）に日数を加算した値を返します。
+
+#### getPrevDate(date?: Date) => Date
+date（未指定の場合現在日）の前日を返します。
+
+#### getNextDate(date?: Date) => Date
+date（未指定の場合現在日）の翌日を返します。
+
+#### getPrevWeekDate(date?: Date) => Date
+date（未指定の場合現在日）の前週日を返します。
+
+#### getNextWeekDate(date?: Date) => Date
+date（未指定の場合現在日）の翌週日を返します。
+
+#### getPrevMonthDate(date?: Date, sameYearMonth?: boolean) => Date
+date（未指定の場合現在日）の前月日を返します。sameYearMonthにtrueを設定した場合は年月を揃えます。
+
+#### getNextMonthDate(date?: Date, sameYearMonth?: boolean) => Date
+date（未指定の場合現在日）の翌月日を返します。sameYearMonthにtrueを設定した場合は年月を揃えます。
+
+#### getPrevYearDate(date?: Date, sameYearMonth?: boolean) => Date
+date（未指定の場合現在日）の前年日を返します。sameYearMonthにtrueを設定した場合は年月を揃えます。
+
+#### getNextYearDate(date?: Date, sameYearMonth?: boolean) => Date
+date（未指定の場合現在日）の翌年日を返します。sameYearMonthにtrueを設定した場合は年月を揃えます。
+
 ---
 
 ## ArrayUtils
