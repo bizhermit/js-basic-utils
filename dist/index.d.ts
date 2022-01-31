@@ -1,3 +1,10 @@
+declare module "@bizhermit/basic-utils/dist/array-utils" {
+    const ArrayUtils: {
+        generateArray: <T = unknown>(length: number, initValue: (index: number) => T) => T[];
+        replaceValue: <T_1 = unknown, U = T_1>(array: T_1[], replace: (value: T_1) => U, copy?: boolean) => U[];
+    };
+    export default ArrayUtils;
+}
 declare module "@bizhermit/basic-utils/dist/string-utils" {
     const StringUtils: {
         isString: (value: unknown) => value is string;
@@ -42,6 +49,11 @@ declare module "@bizhermit/basic-utils/dist/datetime-utils" {
         getResetedTimeDate: () => Date;
         getDaysDiff: (before: Date | null | undefined, after: Date | null | undefined) => number;
         getDays: (date1: Date | null | undefined, date2: Date | null | undefined) => number;
+        getFirstDateAtMonth: (date?: Date) => Date;
+        getLastDateAtMonth: (date?: Date) => Date;
+        getFirstDateAtYear: (date?: Date) => Date;
+        getLastDateAtYear: (date?: Date) => Date;
+        validContext: (before: Date | null | undefined, after: Date | null | undefined) => boolean;
     };
     export default DatetimeUtils;
 }
@@ -55,6 +67,11 @@ declare module "@bizhermit/basic-utils/dist/number-utils" {
         adds: (...values: Array<number | null | undefined>) => number;
         minus: (value1: number | null | undefined, value2: number | null | undefined) => number;
         getFloatPosition: (value: number | null | undefined) => number;
+        round: (value: number, float?: number) => number;
+        ceil: (value: number, float?: number) => number;
+        floor: (value: number, float?: number) => number;
+        average: (...values: Array<number | null | undefined>) => number;
+        nullZeroAverage: (...values: Array<number | null | undefined>) => number;
     };
     export default NumberUtils;
 }

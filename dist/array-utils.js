@@ -1,17 +1,1 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const ArrayUtils = {
-    generateArray: (length, initValue) => {
-        const arr = [];
-        for (let i = 0; i < length; i++)
-            arr.push(initValue(i));
-        return arr;
-    },
-    replaceValue: (array, replace, copy = false) => {
-        const retArr = (copy ? [] : array);
-        for (let i = 0, il = array.length; i < il; i++)
-            retArr[i] = replace(array[i]);
-        return retArr;
-    },
-};
-exports.default = ArrayUtils;
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});const ArrayUtils={generateArray:(e,r)=>{const t=[];for(let s=0;s<e;s++)t.push(r(s));return t},replaceValue:(e,r,t=!1)=>{const s=t?[]:e;for(let t=0,l=e.length;t<l;t++)s[t]=r(e[t]);return s}};exports.default=ArrayUtils;

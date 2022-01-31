@@ -5,6 +5,7 @@
 - StringUtils
 - NumberUtils
 - DatetimeUtils
+- ArrayUtils
 
 ---
 
@@ -116,6 +117,21 @@ value1からvalue2を減算した値を返します。浮動小数点を含む�
 #### getFloatPosition(value: number | null | undefined) => number
 valueの少数部の桁数（少数第n位）を返します。
 
+#### round(value: number, float?: number) => number
+valueを四捨五入した値を返します。floatで少数部の桁数を指定できます。
+
+#### ceil(value: number, float?: number) => number
+valueを切り捨てした値を返します。floatで少数部の桁数を指定できます。
+
+#### floor(value: number, float?: number) => number
+valueを切り上げした値を返します。floatで少数部の桁数を指定できます。
+
+#### average(...values: Array<number | null | undefined>) => number
+valuesの平均値を返します。nullまたはundefindの場合は集計されません。
+
+#### nullZeroAverage(...values: Array<number | null | undefined>) => number
+valuesの平均値を返します。nullまたはundefindの場合は0として集計されます。
+
 ---
 
 ## DatetimeUtils
@@ -174,3 +190,29 @@ dateの時・分・秒・ミリ秒を0にした値を返します。
 
 #### getDays(date1: Date | null | undefined, date2: Date | null | undefined) => number
 二つの日付の日数を返します。
+
+#### getFirstDateAtMonth(date?: Date) => Date
+date（未指定の場合現在日）の月初日を返します。
+
+#### getLastDateAtMonth(date?: Date) => Date
+date（未指定の場合現在日）の月末日を返します。
+
+#### getFirstDateAtYear(date?: Date) => Date
+date（未指定の場合現在日）の年初日を返します。
+
+#### getLastDateAtYear(date?: Date) => Date
+date（未指定の場合現在日）の年末日を返します。
+
+#### validContext(before: Date | null | undefined, after: Date | null | undefined) => boolean
+beforeとafterの前後関係が適切かどうかを返します。  
+※ beforeとafterが同日の場合はtrueを返します。
+
+---
+
+## ArrayUtils
+
+#### generateArray<T = unknown>(length: number, initValue: (index: number) => T) => T[]
+新しい配列を返します。initValueの戻り値で値を初期化します。
+
+#### replaceValue<T = unknown, U = T>(array: T_1[], replace: (value: T_1) => U, copy?: boolean) => U[]
+配列の値を置換します。copyにtrueを設定すると、新しい配列を返します。
