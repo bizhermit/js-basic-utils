@@ -129,5 +129,40 @@ const DatetimeUtils = {
         if (before == null || after == null) return true;
         return DatetimeUtils.getDaysDiff(before, after) >= 0;
     },
+    addDay: (date = new Date(), add: number) => {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate() + add);
+    },
+    getPrevDate: (date = new Date()) => {
+        return DatetimeUtils.addDay(date, -1);
+    },
+    getNextDate: (date = new Date()) => {
+        return DatetimeUtils.addDay(date, 1);
+    },
+    getPrevWeekDate: (date = new Date()) => {
+        return DatetimeUtils.addDay(date, -7);
+    },
+    getNextWeekDate: (date = new Date()) => {
+        return DatetimeUtils.addDay(date, 7);
+    },
+    getPrevMonthDate: (date = new Date()) => {
+        const ret = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate())
+        if (ret.getDate() !== date.getDate()) ret.setDate(0);
+        return ret;
+    },
+    getNextMonthDate: (date = new Date()) => {
+        const ret = new Date(date.getFullYear(), date.getMonth() + 1, date.getDate());;
+        if (ret.getDate() !== date.getDate()) ret.setDate(0);
+        return ret;
+    },
+    getPrevYearDate: (date = new Date()) => {
+        const ret = new Date(date.getFullYear() - 1, date.getMonth(), date.getDate());;
+        if (ret.getDate() !== date.getDate()) ret.setDate(0);
+        return ret;
+    },
+    getNextYearDate: (date = new Date()) => {
+        const ret = new Date(date.getFullYear() + 1, date.getMonth(), date.getDate());
+        if (ret.getDate() !== date.getDate()) ret.setDate(0);
+        return ret;
+    },
 };
 export default DatetimeUtils;
