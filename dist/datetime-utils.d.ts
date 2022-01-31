@@ -10,5 +10,10 @@ declare const DatetimeUtils: {
     getResetedTimeDate: () => Date;
     getDaysDiff: (before: Date | null | undefined, after: Date | null | undefined) => number;
     getDays: (date1: Date | null | undefined, date2: Date | null | undefined) => number;
+    getFirstDateAtMonth: (date?: Date) => Date;
+    getLastDateAtMonth: (date?: Date) => Date;
+    getFirstDateAtYear: (date?: Date) => Date;
+    getLastDateAtYear: (date?: Date) => Date;
+    validContext: (before: Date | null | undefined, after: Date | null | undefined) => boolean;
 };
 export default DatetimeUtils;

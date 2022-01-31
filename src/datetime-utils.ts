@@ -113,5 +113,21 @@ const DatetimeUtils = {
         if (date1 == null && date2 == null) return 0;
         return Math.abs(DatetimeUtils.getDaysDiff(date1, date2)) + 1;
     },
+    getFirstDateAtMonth: (date = new Date()) => {
+        return new Date(date.getFullYear(), date.getMonth(), 1);
+    },
+    getLastDateAtMonth: (date = new Date()) => {
+        return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    },
+    getFirstDateAtYear: (date = new Date()) => {
+        return new Date(date.getFullYear(), 0, 1);
+    },
+    getLastDateAtYear: (date = new Date()) => {
+        return new Date(date.getFullYear(), 11, 31);
+    },
+    validContext: (before: Date | null | undefined, after: Date | null | undefined) => {
+        if (before == null || after == null) return true;
+        return DatetimeUtils.getDaysDiff(before, after) >= 0;
+    },
 };
 export default DatetimeUtils;
