@@ -164,5 +164,17 @@ const DatetimeUtils = {
         if (sameYearMonth === true && ret.getDate() !== date.getDate()) ret.setDate(0);
         return ret;
     },
+    equalDate: (date1: Date, date2: Date) => {
+        if (date1 == null || date2 == null) return false;
+        return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
+    },
+    equalYearMonth: (date1: Date, date2: Date) => {
+        if (date1 == null || date2 == null) return false;
+        return date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
+    },
+    equalYear: (date1: Date, date2: Date) => {
+        if (date1 == null || date2 == null) return false;
+        return date1.getFullYear() === date2.getFullYear();
+    },
 };
 export default DatetimeUtils;
