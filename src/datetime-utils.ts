@@ -164,17 +164,29 @@ const DatetimeUtils = {
         if (sameYearMonth === true && ret.getDate() !== date.getDate()) ret.setDate(0);
         return ret;
     },
-    equalDate: (date1: Date, date2: Date) => {
+    equalDate: (date1: Date | null | undefined, date2: Date | null | undefined) => {
         if (date1 == null || date2 == null) return false;
         return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
     },
-    equalYearMonth: (date1: Date, date2: Date) => {
+    equalDay: (date1: Date | null | undefined, date2: Date | null | undefined) => {
+        if (date1 == null || date2 == null) return false;
+        return date1.getDate() === date2.getDate();
+    },
+    equalYearMonth: (date1: Date | null | undefined, date2: Date | null | undefined) => {
         if (date1 == null || date2 == null) return false;
         return date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
     },
-    equalYear: (date1: Date, date2: Date) => {
+    equalMonth: (date1: Date | null | undefined, date2: Date | null | undefined) => {
+        if (date1 == null || date2 == null) return false;
+        return date1.getMonth() === date2.getMonth()
+    },
+    equalYear: (date1: Date | null | undefined, date2: Date | null | undefined) => {
         if (date1 == null || date2 == null) return false;
         return date1.getFullYear() === date2.getFullYear();
+    },
+    equalWeek: (date1: Date | null | undefined, date2: Date | null | undefined) => {
+        if (date1 == null || date2 == null) return false;
+        return date1.getDay() === date2.getDay();
     },
 };
 export default DatetimeUtils;

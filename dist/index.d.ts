@@ -63,6 +63,12 @@ declare module "@bizhermit/basic-utils/dist/datetime-utils" {
         getNextMonthDate: (date?: Date, sameYearMonth?: boolean) => Date;
         getPrevYearDate: (date?: Date, sameYearMonth?: boolean) => Date;
         getNextYearDate: (date?: Date, sameYearMonth?: boolean) => Date;
+        equalDate: (date1: Date | null | undefined, date2: Date | null | undefined) => boolean;
+        equalDay: (date1: Date | null | undefined, date2: Date | null | undefined) => boolean;
+        equalYearMonth: (date1: Date | null | undefined, date2: Date | null | undefined) => boolean;
+        equalMonth: (date1: Date | null | undefined, date2: Date | null | undefined) => boolean;
+        equalYear: (date1: Date | null | undefined, date2: Date | null | undefined) => boolean;
+        equalWeek: (date1: Date | null | undefined, date2: Date | null | undefined) => boolean;
     };
     export default DatetimeUtils;
 }

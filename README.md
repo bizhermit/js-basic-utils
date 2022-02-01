@@ -234,6 +234,24 @@ date（未指定の場合現在日）の前年日を返します。sameYearMonth
 #### getNextYearDate(date?: Date, sameYearMonth?: boolean) => Date
 date（未指定の場合現在日）の翌年日を返します。sameYearMonthにtrueを設定した場合は年月を揃えます。
 
+#### equalDate(date1: Date | null | undefined, date2: Date | null | undefined) => boolean
+年月日が一致しているかどうかを返します。
+
+#### equalDay(date1: Date | null | undefined, date2: Date | null | undefined) => boolean
+日が一致しているかどうかを返します。
+
+#### equalYearMonth(date1: Date | null | undefined, date2: Date | null | undefined) => boolean
+年月が一致しているかどうかを返します。
+
+#### equalMonth(date1: Date | null | undefined, date2: Date | null | undefined) => boolean
+月が一致しているかどうかを返します。
+
+#### equalYear(date1: Date | null | undefined, date2: Date | null | undefined) => boolean
+年が一致しているかどうかを返します。
+
+#### equalWeek(date1: Date | null | undefined, date2: Date | null | undefined) => boolean
+曜日が一致しているかどうかを返します。
+
 ---
 
 ## ArrayUtils
