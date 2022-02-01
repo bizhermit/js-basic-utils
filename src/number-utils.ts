@@ -15,6 +15,21 @@ const NumberUtils = {
         if (typeof value === "number") return value;
         return Number(value.replace(/,/g, ""));
     },
+    format: (value: number, options?: { nv?: string; ts?: boolean; fp?: number; }) => {
+        if (value == null || typeof value !== "number") return options?.nv;
+        let ret = value.toString(10);
+        const s = ret.split(".");
+        ret = options?.ts !== false ? s[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : s[0];
+        const f = s[1] || "";
+        if (options?.fp) {
+            ret += "." + f;
+            const c = options.fp - f.length;
+            if (c > 0) ret += "0".repeat(c);
+        } else if (f) {
+            ret += "." + f;
+        }
+        return ret;
+    },
     add: (value1: number | null | undefined, value2: number | null | undefined) => {
         if (value2 == null) return value1 ?? 0;
         if (value1 == null) return value2 ?? 0;
