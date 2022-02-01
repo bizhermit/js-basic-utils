@@ -259,5 +259,5 @@ date（未指定の場合現在日）の翌年日を返します。sameYearMonth
 #### generateArray<T = unknown>(length: number, initValue: (index: number) => T) => T[]
 新しい配列を返します。initValueの戻り値で値を初期化します。
 
-#### replaceValue<T = unknown, U = T>(array: T_1[], replace: (value: T_1) => U, copy?: boolean) => U[]
+#### replaceValue<T = unknown, U = T>(array: T[], replace: (value: T) => U, copy?: boolean) => U[]
 配列の値を置換します。copyにtrueを設定すると、新しい配列を返します。
