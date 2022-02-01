@@ -3,6 +3,11 @@ declare const NumberUtils: {
     isNull: (value: number | null | undefined) => value is null | undefined;
     thousandsSeparator: (value: number | null | undefined, whenNullValue?: string) => string;
     removeThousandsSeparator: (value: string | null | undefined, whenNullOrEmptyValue?: number) => number;
+    format: (value: number | null | undefined, options?: {
+        nullVal?: string | undefined;
+        thou?: boolean | undefined;
+        fpad?: number | undefined;
+    } | undefined) => string | undefined;
     add: (value1: number | null | undefined, value2: number | null | undefined) => number;
     adds: (...values: Array<number | null | undefined>) => number;
     minus: (value1: number | null | undefined, value2: number | null | undefined) => number;

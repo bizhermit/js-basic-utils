@@ -100,10 +100,17 @@ UUID Ver4であるかどうかを返します。
 valueがnullまたはundefindであるかどうかを返します。
 
 #### thousandsSeparator(value: number | null | undefined, whenNullValue?: string) => string
-valueを三桁区切りの文字列に変換します。valueがnullまたはundefindの場合は、whenNullValueを返します。
+valueを三桁区切りの文字列に変換します。valueがnullまたはundefindの場合は、whenNullValueを返します。  
+※ formatの使用を推奨
 
 #### removeThousandsSeparator(value: string | null | undefined, whenNullOrEmptyValue?: number) => number
 value（string）から三桁区切りのコンマを除去した数値を返します。
+
+#### format(value: number, options?: { nullVal?: string; thou?: boolean; fpad?: number; }) => string | undefined
+数値をフォーマットします。
+- nullVal: valueがnullまたはundefindの場合に戻り値として使用されます。
+- thou: 三桁区切りをするかどうかを指定します。初期値はtrueです。
+- fpad: 少数部のゼロ埋めの桁数です。初期値は0です。
 
 #### add(value1: number | null | undefined, value2: number | null | undefined) => number
 value1にvalue2を加算した値を返します。浮動小数点を含む演算に対応しています。
