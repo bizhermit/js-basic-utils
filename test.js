@@ -14,15 +14,15 @@ const ArrayUtils = require("./dist/array-utils").default;
 // for (let i = 0; i < 17; i++) {
 //     // console.log(NumberUtils.format(Number("9".repeat(i) || "0")));
 // }
-// console.log(NumberUtils.format(0, { thousandsSeparator: true }));
-// console.log(NumberUtils.format(123450, { thousandsSeparator: true }));
-// console.log(NumberUtils.format(12345.6, { thousandsSeparator: false }));
-console.log(NumberUtils.format(12345.44, { floatPadding: -3 }));
-// console.log(NumberUtils.format(12345.6, { floatPadding: 0 }));
-// console.log(NumberUtils.format(12345.67, { floatPadding: 3 }));
-// console.log(NumberUtils.format(12345.678, { floatPadding: 3 }));
-// console.log(NumberUtils.format(12345.6789, { floatPadding: 3 }));
-// console.log(NumberUtils.format(12345.67891, { floatPadding: 3 }));
+// console.log(NumberUtils.format(0, { thou: true }));
+// console.log(NumberUtils.format(123450, { thou: true }));
+// console.log(NumberUtils.format(12345.6, { thou: false }));
+console.log(NumberUtils.format(12345.44, { fpad: 3 }));
+// console.log(NumberUtils.format(12345.6, { fpad: 0 }));
+// console.log(NumberUtils.format(12345.67, { fpad: 3 }));
+// console.log(NumberUtils.format(12345.678, { fpad: 3 }));
+// console.log(NumberUtils.format(12345.6789, { fpad: 3 }));
+// console.log(NumberUtils.format(12345.67891, { fpad: 3 }));
 
 // const beforeDate = new Date();
 // const afterDate = new Date(beforeDate);
