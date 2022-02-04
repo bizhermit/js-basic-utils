@@ -47,6 +47,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isString(null);      // => false
   StringUtils.isString(undefined); // => false
   ```
+
 * **isNull(value: string | null | undefined) => value is null | undefined**
   return value is null or undefined.
   ```ts
@@ -239,7 +240,13 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ## NumberUtils
 
 * **isNumber(value: unknown) => value is number**
-オブジェクトの型がnumberであるかどうかを返します。
+  return value is number object.
+  ```ts
+  StringUtils.isString(100);       // => true
+  StringUtils.isString("string");  // => false
+  StringUtils.isString(null);      // => false
+  StringUtils.isString(undefined); // => false
+  ```
 
 * **isNull(value: number | null | undefined) => value is null | undefined**
 valueがnullまたはundefinedであるかどうかを返します。
