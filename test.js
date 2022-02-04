@@ -3,6 +3,7 @@ const NumberUtils = require("./dist/number-utils").default;
 const DatetimeUtils = require("./dist/datetime-utils").default;
 const ArrayUtils = require("./dist/array-utils").default;
 
+console.log(StringUtils.generateUuidV4());
 // console.log(StringUtils.isUuidV4(StringUtils.generateUuidV4()));
 // console.log(StringUtils.join(":", "hoge", "fuga", "hage"));
 
@@ -17,7 +18,7 @@ const ArrayUtils = require("./dist/array-utils").default;
 // console.log(NumberUtils.format(0, { thou: true }));
 // console.log(NumberUtils.format(123450, { thou: true }));
 // console.log(NumberUtils.format(12345.6, { thou: false }));
-console.log(NumberUtils.format(12345.44, { fpad: 3 }));
+// console.log(NumberUtils.format(12345.44, { fpad: 3 }));
 // console.log(NumberUtils.format(12345.6, { fpad: 0 }));
 // console.log(NumberUtils.format(12345.67, { fpad: 3 }));
 // console.log(NumberUtils.format(12345.678, { fpad: 3 }));

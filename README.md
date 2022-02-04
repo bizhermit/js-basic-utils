@@ -130,49 +130,109 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   ```
 
 * **isHalfWidthSymbols(value: string | null | undefined) => boolean**
-valueが半角記号であるかどうかを返します。
+  return value is half width symbols.
+  ```ts
+  StringUtils.isHalfWidthSymbols("./,!"); // => true
+  StringUtils.isHalfWidthSymbols("./,1"); // => false
+  ```
 
 * **isHalfWidthAlphanumeric(value: string | null | undefined) => boolean**
-valueが半角英数字であるかどうかを返します。
+  return value is half width alphabet or numeric.
+  ```ts
+  StringUtils.isHalfWidthAlphanumeric("123abc"); // => true
+  StringUtils.isHalfWidthAlphanumeric("123");    // => true
+  StringUtils.isHalfWidthAlphanumeric("abc");    // => true
+  StringUtils.isHalfWidthAlphanumeric("abc,23"); // => false
+  StringUtils.isHalfWidthAlphanumeric("あc,23"); // => false
+  ```
 
 * **isHalfWidthAlphanumericAndSymbols(value: string | null | undefined) => boolean**
-valueが半角英数字記号であるかどうかを返します。
+  return value is half width alphabet or numeric or symbols.
+  ```ts
+  StringUtils.isHalfWidthAlphanumericAndSymbols("123abc"); // => true
+  StringUtils.isHalfWidthAlphanumericAndSymbols("123");    // => true
+  StringUtils.isHalfWidthAlphanumericAndSymbols("abc");    // => true
+  StringUtils.isHalfWidthAlphanumericAndSymbols("abc,23"); // => true
+  StringUtils.isHalfWidthAlphanumericAndSymbols("あc,23"); // => false
+  ```
 
 * **isHalfWidthKatakana(value: string | null | undefined) => boolean**
-valueが半角カタカナであるかどうかを返します。
+  return value is half width katakana.
+  ```ts
+  StringUtils.isHalfWidthKatakana("ｲﾛﾊ");    // => true
+  StringUtils.isHalfWidthKatakana("イロハ"); // => false
+  StringUtils.isHalfWidthKatakana("いろは"); // => false
+  StringUtils.isHalfWidthKatakana("abc");    // => false
+  ```
 
 * **isHiragana(value: string | null | undefined) => boolean**
-valueが全角ひらがなであるかどうかを返します。
+  return value is hiragana.
+  ```ts
+  StringUtils.isHiragana("ｲﾛﾊ");    // => false
+  StringUtils.isHiragana("イろハ"); // => false
+  StringUtils.isHiragana("いろは"); // => true
+  StringUtils.isHiragana("いろ歯"); // => false
+  StringUtils.isHiragana("abc");   // => false
+  ```
 
 * **isKatakana(value: string | null | undefined) => boolean**
-valueが全角カタカナであるかどうかを返します。
+  return value is full width katakana.
+  ```ts
+  StringUtils.isKatakana("ｲﾛﾊ");    // => false
+  StringUtils.isKatakana("イロハ"); // => true
+  StringUtils.isKatakana("イろハ"); // => false
+  StringUtils.isKatakana("いろ歯"); // => false
+  StringUtils.isKatakana("abc");   // => false
+  ```
 
 * **isFullOrHalfWidthKatakana(value: string | null | undefined) => boolean**
-valueが半角または全角のカタカナであるかどうかを返します。
+  return value is katakana.
+  ```ts
+  StringUtils.isFullOrHalfWidthKatakana("ｲﾛﾊ");    // => true
+  StringUtils.isFullOrHalfWidthKatakana("イロハ"); // => true
+  StringUtils.isFullOrHalfWidthKatakana("イろハ"); // => false
+  StringUtils.isFullOrHalfWidthKatakana("いろ歯"); // => false
+  StringUtils.isFullOrHalfWidthKatakana("abc");   // => false
+  ```
 
 * **isInteger(value: string | null | undefined) => boolean**
-valueが数値を表しているかどうかを返します。
+  return value is integer.
+  ```ts
+  StringUtils.isInteger("1234");  // => true
+  StringUtils.isInteger("0123");  // => false
+  StringUtils.isInteger("+0123"); // => false
+  StringUtils.isInteger("+1234"); // => true
+  StringUtils.isInteger("-1234"); // => true
+  StringUtils.isInteger("0");     // => true
+  ```
 
 * **isPhoneNumber(value: string | null | undefined) => boolean**
-valueが電話番号のフォーマットであるかどうかを返します。
+  return value is phone number. maybe only Japan.
 
 * **isPostalCode(value: string | null | undefined) => boolean**
-valueが郵便番号のフォーマットであるかどうかを返します。
+  return value is post code. maybe only Japan.
 
 * **isMailAddress(value: string | null | undefined) => boolean**
-valueがメールアドレスのフォーマットであるかどうかを返します。
+  return value is mail address.
 
 * **isIpv4Address(value: string | null | undefined) => boolean**
-valueがIPv4アドレスのフォーマットであるかどうかを返します。
+  return value is ip v4 address.
 
 * **isIpv6Address(value: string | null | undefined) => boolean**
-valueがIPv6アドレスのフォーマットであるかどうかを返します。
+  return value is ip v6 address.
 
 * **generateUuidV4() => string**
   return uuid ver4.
+  ```ts
+  StringUtils.generateUuidV4(); // => e.g.) "54fce1e8-7e4e-4112-8b95-f03130e9f822"
+  ```
 
 * **isUuidV4(value: string | null | undefined) => boolean**
   return value is uuid ver4.
+  ```ts
+  StringUtils.isUuidV4("54fce1e8-7e4e-4112-8b95-f03130e9f822"); // => true
+  StringUtils.isUuidV4("uuidV4"); // => false
+  ```
 
 ---
 
@@ -229,22 +289,22 @@ valuesの平均値を返します。nullまたはundefinedの場合は0として
 ## DatetimeUtils
 
 * **isValidNumber(yearNum: unknown, monthNum: unknown, dayNum: unknown) => boolean**
-年・月・日の値が日付の値として適切かどうかを返します。  
-```ts
-isValidNumber(2022, 1, 1) => true // 2022/1/1
-isValidNumber(2022, 0, 1) => false // 2021/12/1
-```
+  年・月・日の値が日付の値として適切かどうかを返します。  
+  ```ts
+  isValidNumber(2022, 1, 1) => true // 2022/1/1
+  isValidNumber(2022, 0, 1) => false // 2021/12/1
+  ```
 
 * **getDateByYMD(yearNum: unknown, monthNum: unknown, dayNum: unknown) => Date**
-年・月・日の値からDateを返します。
+  年・月・日の値からDateを返します。
 
 * **convertStringToDate(str: string | null | undefined, whenFailedValue?: Date) => Date**
-strDate型に変換した値を返します。変換に失敗した場合はwhenFailedValueを返します。  
-対応フォーマットは以下の通り。
-  - ハイフン（-）で区切られている（yyyy-MM-dd）（yyyy-M-d）
-  - スラッシュ（/）で区切られている（yyyy/MM/dd）（yyyy/M/d）
-  - 数字八桁（yyyyMMdd）
-  - 年月日で区切られている（yyyy年MM月dd日）（yyyy年M月d日）
+  strDate型に変換した値を返します。変換に失敗した場合はwhenFailedValueを返します。  
+  対応フォーマットは以下の通り。
+    - ハイフン（-）で区切られている（yyyy-MM-dd）（yyyy-M-d）
+    - スラッシュ（/）で区切られている（yyyy/MM/dd）（yyyy/M/d）
+    - 数字八桁（yyyyMMdd）
+    - 年月日で区切られている（yyyy年MM月dd日）（yyyy年M月d日）
 
 * **convertToDate(date: string | number | Date | null | undefined, whenFailedValue?: Date) => Date**
 Dateに変換した値を返します。変換に失敗した場合はwhenFailedValueを返します。  
@@ -351,9 +411,9 @@ date（未指定の場合現在日）の翌年日を返します。sameYearMonth
 * **generateArray<T = unknown>(length: number, initValue: (index: number) => T) => T[]**
   return new array object.
   ```ts
-  const arr = ArrayUtils.generateArray(3, (index) => {
+  const arr = ArrayUtils.generateArray(5, (index) => {
     return index * 5;
-  }); // => [0, 5, 10];
+  }); // => [0, 5, 10, 15, 20];
   ```
 
 * **replaceValue<T = unknown, U = T>(array: T[], replace: (value: T) => U, copy?: boolean) => U[]**
@@ -361,16 +421,16 @@ date（未指定の場合現在日）の翌年日を返します。sameYearMonth
   ```ts
   const arr1 = [1, 2, 3, 4, 5];
   const arr2 = ArrayUtils.replaceValue(arr1, (value) => {
-    return value * 5;
+    return String(value * 5);
   });
-  console.log(arr1); // => [5, 10, 15, 20, 25]
-  console.log(arr2); // => [5, 10, 15, 20, 25]
+  console.log(arr1); // => ["5", "10", "15", "20", "25"]
+  console.log(arr2); // => ["5", "10", "15", "20", "25"]
 
   // copy
   const arr3 = [1, 2, 3, 4, 5];
   const arr4 = ArrayUtils.replaceValue(arr3, (value) => {
-    return value * 5;
+    return String(value * 5);
   }, true);
   console.log(arr3); // => [1, 2, 3, 4, 5]
-  console.log(arr4); // => [5, 10, 15, 20, 25]
+  console.log(arr4); // => ["5", "10", "15", "20", "25"]
   ```
