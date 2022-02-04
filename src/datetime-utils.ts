@@ -1,117 +1,80 @@
-import StringUtils from "./string-utils";
+export const week_ja = ["日", "月", "火", "水", "木", "金", "土"];
+export const week_en = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+export const month_en = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-const padding = (val: number, paddingStr: string = "00") => {
-    return (paddingStr + String(val)).slice(-paddingStr.length);
-}
+export const convert = (date: string | number | Date | null | undefined) => {
+    if (date == null) return null;
+    if (typeof date === "string") {
+        let ctx = date.match(/^(\d{4})(\d{2}|$)(\d{2}|$)(\d{2}|$)(\d{2}|$)(\d{2}|$)(\d{3}|$)/);
+        if (!ctx) ctx = date.match(/^(\d+)?(?:-|\/|年|$)(\d+)?(?:-|\/|月|$)(\d+)?(?:\s*|日\s*|T|$)(\d+)?(?::|時|$)(\d+)?(?::|分|$)(\d+)?(?:.|秒|$)(\d+)?(?:.*|$)/);
+        if (ctx) return new Date(Number(ctx[1]), Number(ctx[2] || 1) - 1, Number(ctx[3] || 1), Number(ctx[4] || 0), Number(ctx[5] || 0), Number([ctx[6] || 0]), Number(ctx[7] || 0));
+        ctx = date.match(/^(?:\w+)?\s(\w+)?\s(\d+)?\s(\d+)?\s(\d+)?:(\d+)?:(\d+)?/);
+        if (ctx) {
+            const re = new RegExp(`^${ctx[1]}`, "i");
+            return new Date(Number(ctx[3]), Math.max(month_en.findIndex(v => re.exec(v)), 0), Number(ctx[2]), Number(ctx[4]), Number(ctx[5]), Number(ctx[6]));
+        }
+        return null;
+    }
+    if (typeof date === "number") return new Date(date);
+    return new Date(date);
+};
+
+export const format = (date?: string | number | Date | null | undefined, pattern = "yyyy-MM-dd", week: Array<string> | "ja" | "en" = week_ja) => {
+    const d = convert(date);
+    if (d == null) return "";
+    return pattern
+        .replace("yyyy", String(d.getFullYear()))
+        .replace("yy", `00${d.getFullYear()}`.slice(-2))
+        .replace("MM", `0${d.getMonth() + 1}`.slice(-2))
+        .replace("M", String(d.getMonth()))
+        .replace("dd", `0${d.getDate()}`.slice(-2))
+        .replace("d", String(d.getDate()))
+        .replace("hh", `0${d.getHours()}`.slice(-2))
+        .replace("h", String(d.getHours()))
+        .replace("mm", `0${d.getMinutes()}`.slice(-2))
+        .replace("m", String(d.getMinutes()))
+        .replace("ss", `0${d.getSeconds()}`.slice(-2))
+        .replace("s", String(d.getSeconds()))
+        .replace("SSS", `00${d.getMilliseconds()}`.slice(-3))
+        .replace("SS", `0${d.getMilliseconds()}`.slice(-2))
+        .replace("S", String(d.getMilliseconds()))
+        .replace("w", (week === "ja" ? week_ja : (week === "en" ? week_en : week))[d.getDay()]);
+};
 
 const DatetimeUtils = {
-    isValidNumber: (yearNum: unknown, monthNum: unknown, dayNum: unknown) => {
-        if (yearNum == null || monthNum == null || dayNum == null) return false;
-        const d = new Date(Number(yearNum), Number(monthNum) - 1, Number(dayNum));
-        return d.getFullYear() === Number(yearNum) && d.getMonth() + 1 === Number(monthNum) && d.getDate() === Number(dayNum);
-    },
-    getDateByYMD: (yearNum: unknown, monthNum: unknown, dayNum: unknown) => {
-        return new Date(Number(yearNum), Number(monthNum) - 1, Number(dayNum));
-    },
-    convertStringToDate: (str: string | null | undefined, whenFailedValue?: Date | null) => {
-        if (StringUtils.isNullOrEmpty(str)) return whenFailedValue;
-        const ev = new Date();
-        if (str.indexOf("-") > 0) {
-            const vals = str.split("-");
-            if (vals.length !== 3) return ev;
-            if (!DatetimeUtils.isValidNumber(vals[0], vals[1], vals[2])) return ev;
-            return DatetimeUtils.getDateByYMD(vals[0], vals[1], vals[2]);
-        }
-        if (str.indexOf("/") > 0) {
-            const vals = str.split("/");
-            if (vals.length !== 3) return ev;
-            if (!DatetimeUtils.isValidNumber(vals[0], vals[1], vals[2])) return ev;
-            return DatetimeUtils.getDateByYMD(vals[0], vals[1], vals[2]);
-        }
-        if (str.length === 8) {
-            const yStr = str.substring(0, 4);
-            const mStr = str.substring(4, 6);
-            const dStr = str.substring(6, 8);
-            if (!DatetimeUtils.isValidNumber(yStr, mStr, dStr)) return ev;
-            return DatetimeUtils.getDateByYMD(yStr, mStr, dStr);
-
-        }
-        const yPos = str.indexOf("年");
-        const mPos = str.indexOf("月");
-        const dPos = str.indexOf("日");
-        if (yPos >= 0 && mPos >= 0 && dPos >= 0) {
-            const yStr = str.substring(0, yPos);
-            const mStr = str.substring(yPos + 1, mPos);
-            const dStr = str.substr(mPos + 1, dPos);
-            if (!DatetimeUtils.isValidNumber(yStr, mStr, dStr)) return ev;
-            return DatetimeUtils.getDateByYMD(yStr, mStr, dStr);
-        }
-        if (yPos >= 0 && mPos >= 0) {
-            const yStr = str.substring(0, yPos);
-            const mStr = str.substring(yPos + 1, mPos);
-            if (!DatetimeUtils.isValidNumber(yStr, mStr, 1)) return ev;
-            return DatetimeUtils.getDateByYMD(yStr, mStr, 1);
-        }
-        return whenFailedValue;
-    },
-    convertToDate: (date: string | number | Date | null | undefined, whenFailedValue?: Date | null) => {
-        if (date == null) return whenFailedValue;
-        if (typeof date === "string" || typeof date === "number") return DatetimeUtils.convertStringToDate(String(date), whenFailedValue);
-        return new Date(date);
-    },
-    convertDateToString: (date: Date | null | undefined, format: string = "yyyy-MM-dd") => {
-        if (date == null || StringUtils.isNullOrEmpty(format)) return "";
-        const yNum = date.getFullYear();
-        const mNum = date.getMonth() + 1;
-        const dNum = date.getDate();
-        const hNum = date.getHours();
-        const miNum = date.getMinutes();
-        const sNum = date.getSeconds();
-        return format.replace("yyyy", String(yNum))
-            .replace("yy", "00" + String(yNum).slice(-2))
-            .replace("MM", ("0" + String(mNum)).slice(-2))
-            .replace("M", String(mNum))
-            .replace("dd", ("0" + String(dNum)).slice(-2))
-            .replace("d", String(dNum))
-            .replace("hh", ("0" + String(hNum)).slice(-2))
-            .replace("h", String(hNum))
-            .replace("mm", ("0" + String(miNum)).slice(-2))
-            .replace("m", String(miNum))
-            .replace("ss", ("0" + String(sNum)).slice(-2))
-            .replace("s", String(sNum));
-    },
-    datetimeStr: () => {
-        const d = new Date();
-        return padding(d.getFullYear(), "0000")
-            + padding(d.getMonth()+1)
-            + padding(d.getDate())
-            + padding(d.getHours())
-            + padding(d.getMinutes());
-    },
+    convert,
+    format,
     copy: (date: Date) => {
-        if (date == null) return date;
-        return new Date(date);
+        return date == null ? date : new Date(date);
     },
-    resetTime: (date: Date) => {
+    removeTime: (date: Date) => {
         if (date == null) return date;
-        date.setHours(0);
-        date.setMinutes(0);
-        date.setSeconds(0);
-        date.setMilliseconds(0);
+        date.setHours(0, 0, 0, 0);
         return date;
     },
-    getResetedTimeDate: () => {
-        return DatetimeUtils.resetTime(new Date());
+    getDate: () => {
+        return DatetimeUtils.removeTime(new Date());
     },
+    getDatetime: () => new Date(),
     getDaysDiff: (before: Date | null | undefined, after: Date | null | undefined) => {
         if (before == null || after == null) return 0;
-        const b = Math.floor(before.getTime() / 86400000);
-        const a = Math.floor(after.getTime() / 86400000);
-        return a - b;
+        return Math.floor(after.getTime() / 86400000) - Math.floor(before.getTime() / 86400000);
     },
     getDays: (date1: Date | null | undefined, date2: Date | null | undefined) => {
         if (date1 == null && date2 == null) return 0;
         return Math.abs(DatetimeUtils.getDaysDiff(date1, date2)) + 1;
+    },
+    addDay: (date: Date, add: number) => {
+        date.setDate(date.getDate() + add);
+        return date;
+    },
+    addMonth: (date: Date, add: number) => {
+        date.setMonth(date.getMonth() + add);
+        return date;
+    },
+    addYear: (date: Date, add: number) => {
+        date.setFullYear(date.getFullYear() + add);
+        return date;
     },
     getFirstDateAtMonth: (date = new Date()) => {
         return new Date(date.getFullYear(), date.getMonth(), 1);
@@ -124,13 +87,6 @@ const DatetimeUtils = {
     },
     getLastDateAtYear: (date = new Date()) => {
         return new Date(date.getFullYear(), 11, 31);
-    },
-    validContext: (before: Date | null | undefined, after: Date | null | undefined) => {
-        if (before == null || after == null) return true;
-        return DatetimeUtils.getDaysDiff(before, after) >= 0;
-    },
-    addDay: (date = new Date(), add: number) => {
-        return new Date(date.getFullYear(), date.getMonth(), date.getDate() + add);
     },
     getPrevDate: (date = new Date()) => {
         return DatetimeUtils.addDay(date, -1);
@@ -164,6 +120,9 @@ const DatetimeUtils = {
         if (sameYearMonth === true && ret.getDate() !== date.getDate()) ret.setDate(0);
         return ret;
     },
+    equal: (date1: Date | null | undefined, date2: Date | null | undefined) => {
+        return date1?.getTime() == date2?.getTime();
+    },
     equalDate: (date1: Date | null | undefined, date2: Date | null | undefined) => {
         if (date1 == null || date2 == null) return false;
         return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
@@ -178,7 +137,7 @@ const DatetimeUtils = {
     },
     equalMonth: (date1: Date | null | undefined, date2: Date | null | undefined) => {
         if (date1 == null || date2 == null) return false;
-        return date1.getMonth() === date2.getMonth()
+        return date1.getMonth() === date2.getMonth();
     },
     equalYear: (date1: Date | null | undefined, date2: Date | null | undefined) => {
         if (date1 == null || date2 == null) return false;
@@ -188,5 +147,26 @@ const DatetimeUtils = {
         if (date1 == null || date2 == null) return false;
         return date1.getDay() === date2.getDay();
     },
+    equalMonthDay: (date1: Date | null | undefined, date2: Date | null | undefined) => {
+        if (date1 == null || date2 == null) return false;
+        return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth();
+    },
+    isBefore: (base: Date, date: Date) => {
+        return base.getTime() > date.getTime();
+    },
+    isAfter: (base: Date, date: Date) => {
+        return base.getTime() < date.getTime();
+    },
+    isBeforeDate: (base: Date, date: Date) => {
+        return Math.floor(base.getTime() / 86400000) > Math.floor(date.getTime() / 86400000);
+    },
+    isAfterDate: (base: Date, date: Date) => {
+        return Math.floor(base.getTime() / 86400000) < Math.floor(date.getTime() / 86400000)
+    },
+    validContext: (before: Date | null | undefined, after: Date | null | undefined) => {
+        if (before == null || after == null) return true;
+        return DatetimeUtils.getDaysDiff(before, after) >= 0;
+    },
 };
+
 export default DatetimeUtils;
