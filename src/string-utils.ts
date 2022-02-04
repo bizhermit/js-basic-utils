@@ -1,36 +1,37 @@
+export const isNull = (value: string | null | undefined): value is null | undefined => {
+    return value == null;
+};
+
+export const isEmpty = (value: string | null | undefined): value is null | undefined => {
+    return value == null || value.length === 0;
+};
+
 const StringUtils = {
     isString: (value: unknown): value is string => {
         return typeof value === "string";
     },
-    isNull: (value: string | null | undefined): value is null | undefined => {
-        return value == null;
-    },
-    isNullOrEmpty: (value: string | null | undefined): value is null | undefined => {
-        return value == null || value === "";
-    },
+    isNull,
+    isEmpty,
     isNotNull: (value: string | null | undefined): value is string => {
-        return value != null;
+        return !isNull(value);
     },
-    isNotNullOrEmpty: (value: string | null | undefined): value is string => {
-        return value != null && value !== "";
+    isNotEmpty: (value: string | null | undefined): value is string => {
+        return !isEmpty(value);
     },
-    notNull: (value: string | null | undefined, whenNullValue: string): string => {
-        if (StringUtils.isNull(value)) return whenNullValue;
-        return value;
+    notNull: (value: string | null | undefined, whenNullValue: string) => {
+        return isNull(value) ? whenNullValue : value;
     },
-    notNullOrEmpty: (value: string | null | undefined, whenNullOrEmptyValue: string): string => {
-        if (StringUtils.isNullOrEmpty(value)) return whenNullOrEmptyValue;
-        return value;
+    notEmpty: (value: string | null | undefined, whenEmptyValue: string) => {
+        return isEmpty(value) ? whenEmptyValue : value;
     },
     contains: (value: string | null | undefined, search: string): boolean => {
-        if (StringUtils.isNotNullOrEmpty(value)) return value.indexOf(search) != -1;
-        return false;
+        return isEmpty(value) ? false : value.indexOf(search) != -1;
     },
     join: (joinStr: string, ...values: Array<string | null | undefined>) => {
         let ret = "";
         const js = joinStr ?? " ";
         values.forEach(v => {
-            if (StringUtils.isNullOrEmpty(v)) return;
+            if (StringUtils.isEmpty(v)) return;
             if (ret.length > 0) ret += js;
             ret += v;
         });
@@ -54,15 +55,11 @@ const StringUtils = {
     },
     isHalfWidthAlphanumericAndSymbols: (value: string | null | undefined) => {
         if (value == null) return false;
-        return /^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/.test(value);
+        return /^[a-zA-Z0-9!-/:-@¥[-`{-~]+$/.test(value);
     },
     isHalfWidthKatakana: (value: string | null | undefined) => {
         if (value == null) return false;
         return /^[｡-ﾟ+]+$/.test(value);
-    },
-    isHiragana: (value: string | null | undefined) => {
-        if (value == null) return false;
-        return /^[ぁ-ゞ]+$/.test(value);
     },
     isKatakana: (value: string | null | undefined) => {
         if (value == null) return false;
@@ -72,20 +69,24 @@ const StringUtils = {
         if (value == null) return false;
         return /^[｡-ﾟ+ァ-ヶ]+$/.test(value);
     },
+    isHiragana: (value: string | null | undefined) => {
+        if (value == null) return false;
+        return /^[ぁ-ゞ]+$/.test(value);
+    },
     isInteger: (value: string | null | undefined) => {
         if (value == null) return false;
-        return /[+-]?(0|[1-9]+\\d*)/.test(value);
+        return /^[+-]?(0|[1-9]\d*)$/.test(value);
     },
     isPhoneNumber: (value: string | null | undefined) => {
         if (value == null) return false;
-        return /^0\\d-\\d{4}-\\d{4}$/.test(value)
-            || /^0\\d{3}-\\d{2}-\\d{4}$/.test(value)
-            || /^0\\d{2}-\\d{3}-\\d{4}$/.test(value)
-            || /^(070|080|090)-\\d{4}-\\d{4}$/.test(value)
-            || /^050-\\d{4}-\\d{4}$/.test(value)
-            || /^\\(0\\d\\)\\d{4}-\\d{4}$/.test(value)
-            || /^\\(0\\d{3}\\)\\d{2}-\\d{4}$/.test(value)
-            || /^0120-\\d{3}-\\d{3}$/.test(value);
+        return /^0\d-\d{4}-\d{4}$/.test(value)
+            || /^0\d{3}-\d{2}-\d{4}$/.test(value)
+            || /^0\d{2}-\d{3}-\d{4}$/.test(value)
+            || /^0(7|8|9)0-\d{4}-\d{4}$/.test(value)
+            || /^050-\d{4}-\d{4}$/.test(value)
+            || /^\(0\d\)\d{4}-\d{4}$/.test(value)
+            || /^\(0\d{3}\)\d{2}-\d{4}$/.test(value)
+            || /^0120-\d{3}-\d{3}$/.test(value);
     },
     isPostalCode: (value: string | null | undefined) => {
         if (value == null) return false;
@@ -93,11 +94,18 @@ const StringUtils = {
     },
     isMailAddress: (value: string | null | undefined) => {
         if (value == null) return false;
-        return /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/.test(value);
+        return /^[A-Za-z0-9][a-zA-Z0-9_.+-]*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]+$/.test(value);
     },
     isIpv4Address: (value: string | null | undefined) => {
         if (value == null) return false;
-        return /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$/.test(value);
+        const s = value.split(".");
+        if (s.length !== 4) return false;
+        for (const numStr of s) {
+            if (!/^(0|[1-9]\d{0,2})/.test(numStr)) return false;
+            const num = Number(numStr);
+            if (num < 0 || num > 255) return false;
+        }
+        return true;
     },
     isIpv6Address: (value: string | null | undefined) => {
         if (value == null) return false;
