@@ -38,7 +38,6 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 
 ## StringUtils
 
-
 * **isString(value: unknown) => value is string**
   return value is string.
   ```ts
@@ -48,7 +47,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isString(undefined); // => false
   ```
 
-* **isNull(value: string | null | undefined) => value is null | undefined**
+* ***isNull(value: string | null | undefined) => value is null | undefined***
   return value is null or undefined.
   ```ts
   StringUtils.isNull(null);      // => true
@@ -57,13 +56,13 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isNull("string");  // => false
   ```
 
-* **isNullOrEmpty(value: string | null | undefined) => value is null | undefined**
+* ***isEmpty(value: string | null | undefined) => value is null | undefined***
   return value is null or undefined or empty.
   ```ts
-  StringUtils.isNullOrEmpty(null);      // => true
-  StringUtils.isNullOrEmpty(undefined); // => true
-  StringUtils.isNullOrEmpty("");        // => true
-  StringUtils.isNullOrEmpty("string");  // => false
+  StringUtils.isEmpty(null);      // => true
+  StringUtils.isEmpty(undefined); // => true
+  StringUtils.isEmpty("");        // => true
+  StringUtils.isEmpty("string");  // => false
   ```
 
 * **isNotNull(value: string | null | undefined) => value is string**
@@ -75,13 +74,13 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isNotNull("string");  // => true
   ```
 
-* **isNotNullOrEmpty(value: string | null | undefined) => value is string**
-  return value is **not** null or undefined or empty.
+* **isNotEmpty(value: string | null | undefined) => value is string**
+  return value is **not** null or undefined or blank.
   ```ts
-  StringUtils.isNotNullOrEmpty(null);      // => false
-  StringUtils.isNotNullOrEmpty(undefined); // => false
-  StringUtils.isNotNullOrEmpty("");        // => false
-  StringUtils.isNotNullOrEmpty("string");  // => true
+  StringUtils.isNotEmpty(null);      // => false
+  StringUtils.isNotEmpty(undefined); // => false
+  StringUtils.isNotEmpty("");        // => false
+  StringUtils.isNotEmpty("string");  // => true
   ```
 
 * **notNull(value: string | null | undefined, whenNullValue: string) => string**
@@ -93,13 +92,13 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.notNull("string", "null value");  // => "string"
   ```
 
-* **notNullOrEmpty(value: string | null | undefined, whenNullOrEmptyValue: string) => string**
+* **notEmpty(value: string | null | undefined, whenEmptyValue: string) => string**
   return value. if value is null or undefined, reutrn whenNullOrEmptyValue.
   ```ts
-  StringUtils.notNullOrEmpty(null, "null value");      // => "null value"
-  StringUtils.notNullOrEmpty(undefined, "null value"); // => "null value"
-  StringUtils.notNullOrEmpty("", "null value");        // => "null value"
-  StringUtils.notNullOrEmpty("string", "null value");  // => "string"
+  StringUtils.notEmpty(null, "null value");      // => "null value"
+  StringUtils.notEmpty(undefined, "null value"); // => "null value"
+  StringUtils.notEmpty("", "null value");        // => "null value"
+  StringUtils.notEmpty("string", "null value");  // => "string"
   ```
 
 * **contains(value: string | null | undefined, search: string) => boolean**
@@ -109,7 +108,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.contains("12hoge34", "hoge"); // => true
   ```
 
-* **join(joinStr?: string, ...values: Array<string | null | undefined>) => string**
+* **join(joinStr: string, ...values: Array<string | null | undefined>) => string**
   return combined text at values. if value is null or undefined, skip combine.
   ```ts
   StringUtils.join(":", "value1", "value2", null, "value4");  // => "value1:value2:value4"
@@ -166,16 +165,6 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isHalfWidthKatakana("abc");    // => false
   ```
 
-* **isHiragana(value: string | null | undefined) => boolean**
-  return value is hiragana.
-  ```ts
-  StringUtils.isHiragana("ｲﾛﾊ");    // => false
-  StringUtils.isHiragana("イろハ"); // => false
-  StringUtils.isHiragana("いろは"); // => true
-  StringUtils.isHiragana("いろ歯"); // => false
-  StringUtils.isHiragana("abc");   // => false
-  ```
-
 * **isKatakana(value: string | null | undefined) => boolean**
   return value is full width katakana.
   ```ts
@@ -196,15 +185,26 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isFullOrHalfWidthKatakana("abc");   // => false
   ```
 
+* **isHiragana(value: string | null | undefined) => boolean**
+  return value is hiragana.
+  ```ts
+  StringUtils.isHiragana("ｲﾛﾊ");    // => false
+  StringUtils.isHiragana("イろハ"); // => false
+  StringUtils.isHiragana("いろは"); // => true
+  StringUtils.isHiragana("いろ歯"); // => false
+  StringUtils.isHiragana("abc");   // => false
+  ```
+
 * **isInteger(value: string | null | undefined) => boolean**
   return value is integer.
   ```ts
-  StringUtils.isInteger("1234");  // => true
-  StringUtils.isInteger("0123");  // => false
-  StringUtils.isInteger("+0123"); // => false
-  StringUtils.isInteger("+1234"); // => true
-  StringUtils.isInteger("-1234"); // => true
-  StringUtils.isInteger("0");     // => true
+  StringUtils.isInteger("0");      // => true
+  StringUtils.isInteger("123");    // => true
+  StringUtils.isInteger("+1234");  // => true
+  StringUtils.isInteger("-1234");  // => true
+  StringUtils.isInteger("123.45"); // => false
+  StringUtils.isInteger("0123");   // => false
+  StringUtils.isInteger("+0123");  // => false
   ```
 
 * **isPhoneNumber(value: string | null | undefined) => boolean**
@@ -242,183 +242,269 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 * **isNumber(value: unknown) => value is number**
   return value is number object.
   ```ts
-  StringUtils.isString(100);       // => true
-  StringUtils.isString("string");  // => false
-  StringUtils.isString(null);      // => false
-  StringUtils.isString(undefined); // => false
+  NumberUtils.isNumber(100);       // => true
+  NumberUtils.isNumber("string");  // => false
+  NumberUtils.isNumber(null);      // => false
+  NumberUtils.isNumber(undefined); // => false
   ```
 
 * **isNull(value: number | null | undefined) => value is null | undefined**
-valueがnullまたはundefinedであるかどうかを返します。
+  return value is null or undefined.
+  ```ts
+  NumberUtils.isNull(null);      // => true
+  NumberUtils.isNull(undefined); // => true
+  NumberUtils.isNull(0);         // => false
+  NumberUtils.isNull(100);       // => false
+  ```
 
-* **thousandsSeparator(value: number | null | undefined, whenNullValue?: string) => string**
-valueを三桁区切りの文字列に変換します。valueがnullまたはundefinedの場合は、whenNullValueを返します。  
-※ formatの使用を推奨
+* ***format(value: number | null | undefined, options?: { thou?: boolean | undefined; fpad?: number | undefined; } | undefined) => string | undefined***
+  number format.
+  ```ts
+  NumberUtils.format(1234567);                  // => "1,234,567"
+  NumberUtils.format(1234567, { thou: false }); // => "1234567"
+  NumberUtils.format(1234.5, { fpad: 3 });      // => "1,234.500"
+  ```
 
-* **removeThousandsSeparator(value: string | null | undefined, whenNullOrEmptyValue?: number) => number**
-value（string）から三桁区切りのコンマを除去した数値を返します。
-
-* **format(value: number, options?: { nullVal?: string; thou?: boolean; fpad?: number; }) => string | undefined**
-数値をフォーマットします。
-- nullVal: valueがnullまたはundefinedの場合に戻り値として使用されます。
-- thou: 三桁区切りをするかどうかを指定します。初期値はtrueです。
-- fpad: 少数部のゼロ埋めの桁数です。初期値は0です。
+* **removeThousandsSeparator(value: string | null | undefined) => number | undefined**
+  return remove colon and convert number.
+  ```ts
+  NumberUtils.removeThousandsSeparator("1,234,567"); // => 1234567
+  NumberUtils.removeThousandsSeparator("12,345.67"); // => 12345.67
+  ```
 
 * **add(value1: number | null | undefined, value2: number | null | undefined) => number**
-value1にvalue2を加算した値を返します。浮動小数点を含む演算に対応しています。
+  return added value.
+  ```ts
+  NumberUtils.add(1.1, 1.2);          // => 2.3
+  NumberUtils.add([undefinded, 1.2]); // => 1.2
+  NumberUtils.add(1.1, null);         // => 1.1
+  ```
 
 * **adds(...values: Array<number | null | undefined>) => number**
-valuesを合算した値を返します。浮動小数点を含む演算に対応しています。
+  return multi added value.
+  ```ts
+  NumberUtils.add(1.1, 1.2, 1.3); // => 3.6
+  NumberUtils.add([1.1, 1.2, 1.3]); // => 3.6
+  NumberUtils.add([1.1, null, 1.3]); // => 2.4
+  ```
 
 * **minus(value1: number | null | undefined, value2: number | null | undefined) => number**
-value1からvalue2を減算した値を返します。浮動小数点を含む演算に対応しています。
+  return minus value.
+  ```ts
+  NumberUtils.minus(2.5 - 1.1); // => 1.4
+  ```
 
 * **getFloatPosition(value: number | null | undefined) => number**
-valueの少数部の桁数（少数第n位）を返します。
+  return float position.
+  ```ts
+  NumberUtils.getFloatPosition(null);   // => 0
+  NumberUtils.getFloatPosition(123);    // => 0
+  NumberUtils.getFloatPosition(123.45); // => 2
+  ```
 
 * **round(value: number, float?: number) => number**
-valueを四捨五入した値を返します。floatで少数部の桁数を指定できます。
+  return rounded value.
+  ```ts
+  NumberUtils.round(31.5);     // => 32
+  NumberUtils.round(1.4);      // => 1
+  NumberUtils.round(1.55, 1);  // => 1.6
+  NumberUtils.round(1.544, 2); // => 1.54
+  NumberUtils.round(1.464, 1); // => 1.5
+  ```
 
 * **ceil(value: number, float?: number) => number**
-valueを切り捨てした値を返します。floatで少数部の桁数を指定できます。
+  return rounded up value.
+  ```ts
+  NumberUtils.ceil(31.5);     // => 32
+  NumberUtils.ceil(1.4);      // => 2
+  NumberUtils.ceil(1.55, 1);  // => 1.6
+  NumberUtils.ceil(1.544, 2); // => 1.55
+  NumberUtils.ceil(1.464, 1); // => 1.5
+  ```
 
 * **floor(value: number, float?: number) => number**
-valueを切り上げした値を返します。floatで少数部の桁数を指定できます。
+  return rounded down value.
+  ```ts
+  NumberUtils.floor(31.5);     // => 31
+  NumberUtils.floor(1.4);      // => 1
+  NumberUtils.floor(1.55, 1);  // => 1.5
+  NumberUtils.floor(1.544, 2); // => 1.54
+  NumberUtils.floor(1.464, 1); // => 1.4
+  ```
 
 * **average(...values: Array<number | null | undefined>) => number**
-valuesの平均値を返します。nullまたはundefinedの場合は集計されません。
+  return average. null or undefined value is skip.
+  ```ts
+  NumberUtils.average(10, 20, 30, 40);       // => 25
+  NumberUtils.average(10, 20, 30, 40, null); // => 25
+  ```
 
 * **nullZeroAverage(...values: Array<number | null | undefined>) => number**
-valuesの平均値を返します。nullまたはundefinedの場合は0として集計されます。
+  return average. null or undefined value is 0.
+  ```ts
+  NumberUtils.average(10, 20, 30, 40);       // => 25
+  NumberUtils.average(10, 20, 30, 40, null); // => 20
+  ```
 
 ---
 
 ## DatetimeUtils
 
-* **isValidNumber(yearNum: unknown, monthNum: unknown, dayNum: unknown) => boolean**
-  年・月・日の値が日付の値として適切かどうかを返します。  
+* ***convert(date: string | number | Date | null | undefined) => Date | null***
+  return date.
   ```ts
-  isValidNumber(2022, 1, 1) => true // 2022/1/1
-  isValidNumber(2022, 0, 1) => false // 2021/12/1
+  DatetimeUtils.convert("2022");                          // => 2022-01-01T00:00:00.000Z
+  DatetimeUtils.convert("2022-04");                       // => 2022-04-01T00:00:00.000Z
+  DatetimeUtils.convert("2022-10-20");                    // => 2022-10-20T00:00:00.000Z
+  DatetimeUtils.convert("2022-10-20 12");                 // => 2022-10-20T12:00:00.000Z
+  DatetimeUtils.convert("2022-10-20 12:34");              // => 2022-10-20T12:34:00.000Z
+  DatetimeUtils.convert("2022-10-20 12:34:56");           // => 2022-10-20T12:34:56.000Z
+  DatetimeUtils.convert("2022-10-20 12:34:56.123");       // => 2022-10-20T12:34:56.123Z
+  DatetimeUtils.convert("2022/10/20T12:34:56.123");       // => 2022-10-20T12:34:56.123Z
+  DatetimeUtils.convert("2022年10月20日 12時34分56秒123"); // => 2022-10-20T12:34:56.123Z
   ```
 
-* **getDateByYMD(yearNum: unknown, monthNum: unknown, dayNum: unknown) => Date**
-  年・月・日の値からDateを返します。
+* ***format(date?: string | number | Date | null | undefined, pattern?: string, week?: Array<string> | "ja" | "en") => string***
+  return formated string.
 
-* **convertStringToDate(str: string | null | undefined, whenFailedValue?: Date) => Date**
-  strDate型に変換した値を返します。変換に失敗した場合はwhenFailedValueを返します。  
-  対応フォーマットは以下の通り。
-    - ハイフン（-）で区切られている（yyyy-MM-dd）（yyyy-M-d）
-    - スラッシュ（/）で区切られている（yyyy/MM/dd）（yyyy/M/d）
-    - 数字八桁（yyyyMMdd）
-    - 年月日で区切られている（yyyy年MM月dd日）（yyyy年M月d日）
+  * `yyyy` year
+  * `yy` year (last two digits)
+  * `MM` month (zero padding as two digits)
+  * `M` month
+  * `dd` day (zero padding as two digits)
+  * `d` day
+  * `hh` hour (zero padding as two digits)
+  * `h` hour
+  * `mm` minutes (zero padding as two digits)
+  * `m` minutes
+  * `ss` seconds (zero padding as two digits)
+  * `s` seconds
+  * `SSS` zero (zero padding as three digits)
+  * `SS` zero (zero padding as three digits and first two digits)
+  * `S` milliseconds
+  * `w` week
 
-* **convertToDate(date: string | number | Date | null | undefined, whenFailedValue?: Date) => Date**
-Dateに変換した値を返します。変換に失敗した場合はwhenFailedValueを返します。  
-stringおよびnumberの場合はconvertStringToDateに基づいて変換されます。
+  ```ts
+  const date = Date(2022, 3, 5, 6, 7, 8, 1);
+  DatetimeUtils.format(date); // => "2022-02-05"
+  DatetimeUtils.format(date, "yyyy/M/d"); // "2022/2/5"
+  DatetimeUtils.format(date, "yyyy年M月d日(w)"); // "2022年2月5日(土)"
+  DatetimeUtils.format(date, "yyyy-MM-dd(w) hh:mm:ss.SS", "en"); // "2022-02-05(Sat) 06:07:08.00"
+  ```
 
-* **convertDateToString(date: Date | null | undefined, format: string) => string**
-dateをフォーマットに基づいて文字列に変換した値を返します。未指定の場合は"yyyy-MM-dd"です。
-  - yyyy: 西暦
-  - yy: 西暦下二桁
-  - MM: 月（ゼロ埋め二桁）
-  - M: 月
-  - dd: 日（ゼロ埋め二桁）
-  - d: 日
-  - hh: 時（ゼロ埋め二桁）
-  - h: 時
-  - mm: 分（ゼロ埋め二桁）
-  - m: 分
-  - ss: 秒（ゼロ埋め二桁）
-  - s: 秒
-
-* **datetimeStr() => string**
-現在時刻をフォーマット：yyyyMMddHHmmの文字列で取得します。
 
 * **copy(date: Date) => Date**
-コピーした日付オブジェクトを返します。
+  return another date object.
 
-* **resetTime(date: Date) => Date**
-dateの時・分・秒・ミリ秒を0にした値を返します。
+* **removeTime(date: Date) => Date**
+  remove time.
 
-* **getResetedTimeDate() => Date**
-時・分・秒・ミリ秒を0にした現在日付を返します。
+* **getDate() => Date**
+  return removed current date.
+
+* **getDatetime() => Date**
+  return current date.
 
 * **getDaysDiff(before: Date | null | undefined, after: Date | null | undefined) => number**
-二つの日付の日数差を返します。
+  return date diff.
 
 * **getDays(date1: Date | null | undefined, date2: Date | null | undefined) => number**
-二つの日付の日数を返します。
+  return day count.
+
+* **addDay(date: Date, add: number) => Date**
+  day add.
+
+* **addMonth(date: Date, add: number) => Date**
+  month add.
+
+* **addYear(date: Date, add: number) => Date**
+  year add.
 
 * **getFirstDateAtMonth(date?: Date) => Date**
-date（未指定の場合現在日）の月初日を返します。
+  return first date at month.
 
 * **getLastDateAtMonth(date?: Date) => Date**
-date（未指定の場合現在日）の月末日を返します。
+  return last date at month.
 
 * **getFirstDateAtYear(date?: Date) => Date**
-date（未指定の場合現在日）の年初日を返します。
+  return first date at year.
 
 * **getLastDateAtYear(date?: Date) => Date**
-date（未指定の場合現在日）の年末日を返します。
-
-* **validContext(before: Date | null | undefined, after: Date | null | undefined) => boolean**
-beforeとafterの前後関係が適切かどうかを返します。  
-※ beforeとafterが同日の場合はtrueを返します。
-
-* **addDay(date: Date | undefined, add: number) => Date**
-date（未指定の場合現在日）に日数を加算した値を返します。
+  return last date at year.
 
 * **getPrevDate(date?: Date) => Date**
-date（未指定の場合現在日）の前日を返します。
+  return previous date.
 
 * **getNextDate(date?: Date) => Date**
-date（未指定の場合現在日）の翌日を返します。
+  return next date.
 
 * **getPrevWeekDate(date?: Date) => Date**
-date（未指定の場合現在日）の前週日を返します。
+  return previous week date.
 
 * **getNextWeekDate(date?: Date) => Date**
-date（未指定の場合現在日）の翌週日を返します。
+  return next week date.
 
 * **getPrevMonthDate(date?: Date, sameYearMonth?: boolean) => Date**
-date（未指定の場合現在日）の前月日を返します。sameYearMonthにtrueを設定した場合は年月を揃えます。
+  return previous month date.
 
 * **getNextMonthDate(date?: Date, sameYearMonth?: boolean) => Date**
-date（未指定の場合現在日）の翌月日を返します。sameYearMonthにtrueを設定した場合は年月を揃えます。
+  return next month date.
 
 * **getPrevYearDate(date?: Date, sameYearMonth?: boolean) => Date**
-date（未指定の場合現在日）の前年日を返します。sameYearMonthにtrueを設定した場合は年月を揃えます。
+  return previous year date.
 
 * **getNextYearDate(date?: Date, sameYearMonth?: boolean) => Date**
-date（未指定の場合現在日）の翌年日を返します。sameYearMonthにtrueを設定した場合は年月を揃えます。
+  return next month date.
+
+* **equal(date1: Date | null | undefined, date2: Date | null | undefined) => boolean**
+  return date1's datetime and date2's datetime is same.
 
 * **equalDate(date1: Date | null | undefined, date2: Date | null | undefined) => boolean**
-年月日が一致しているかどうかを返します。
+  return date1's date and date2's date is same.
 
 * **equalDay(date1: Date | null | undefined, date2: Date | null | undefined) => boolean**
-日が一致しているかどうかを返します。
+  return date1's day and date2's day is same.
 
 * **equalYearMonth(date1: Date | null | undefined, date2: Date | null | undefined) => boolean**
-年月が一致しているかどうかを返します。
+  return date1's year,month and date2's year,month is same.
 
 * **equalMonth(date1: Date | null | undefined, date2: Date | null | undefined) => boolean**
-月が一致しているかどうかを返します。
+  return date1's month and date2's month is same.
 
 * **equalYear(date1: Date | null | undefined, date2: Date | null | undefined) => boolean**
-年が一致しているかどうかを返します。
+  return date1's year and date2's year is same.
 
 * **equalWeek(date1: Date | null | undefined, date2: Date | null | undefined) => boolean**
-曜日が一致しているかどうかを返します。
+  return date1's week and date2's week is same.
+
+* **equalMonthDay(date1: Date | null | undefined, date2: Date | null | undefined) => boolean**
+  return date1's month,day and date2's month,day is same.
+
+* **isBefore(base: Date, date: Date) => boolean**
+  return date's datetime is before (not same).
+
+* **isAfter(base: Date, date: Date) => boolean**
+  return date's datetime is after (not same).
+
+* **isBeforeDate(base: Date, date: Date) => boolean**
+  return date's date is before (not same).
+
+* **isAfterDate(base: Date, date: Date) => boolean**
+  return date's date is after (not same).
+
+* **validContext(before: Date | null | undefined, after: Date | null | undefined) => boolean**
+  return valid before after.
 
 ---
 
 ## ArrayUtils
 
-* **generateArray<T = unknown>(length: number, initValue: (index: number) => T) => T[]**
+* **generateArray<T = unknown>(length: number, initValue?: T | ((index: number) => T) | undefined) => T[]**
   return new array object.
   ```ts
-  const arr = ArrayUtils.generateArray(5, (index) => {
+  ArrayUtils.generateArray(5); // => [undefined, undefined, undefined, undefined, undefined]
+  ArrayUtils.generateArray("string"); // => ["string", "string", "string", "string", "string"]
+  ArrayUtils.generateArray(5, (index) => {
     return index * 5;
   }); // => [0, 5, 10, 15, 20];
   ```

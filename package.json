@@ -21,12 +21,12 @@
   "scripts": {
     "dev": "node test",
     "build:types": "npx rimraf @bizhermit && npx cpx src/**/*.{ts,tsx} @bizhermit/basic-utils/dist && npx tsc -p src/tsconfig.types.json --emitDeclarationOnly && npx rimraf @bizhermit",
-    "build": "npx rimraf dist LICENSE-ADD && npx tsc -p src/tsconfig.json && npx minifier dist && npx license -o LICENSE-ADD && npm run build:types",
+    "build": "npx rimraf dist LICENSE-ADD && npx tsc -p src/tsconfig.json && npx minifier dist && npx license -o LICENSE-ADD --returnError && npm run build:types",
     "prepare": "npm run build && git add -A && git diff --quiet --exit-code --cached || git commit -m \"build v%npm_package_version%\" && git push origin",
     "postpublish": "git tag && git push origin tags/v%npm_package_version%"
   },
   "devDependencies": {
-    "@bizhermit/license": "^1.0.3",
+    "@bizhermit/license": "^1.0.6",
     "@bizhermit/minifier": "^1.0.4",
     "cpx": "^1.5.0",
     "rimraf": "^3.0.2",

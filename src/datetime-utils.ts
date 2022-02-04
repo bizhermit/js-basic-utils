@@ -26,7 +26,7 @@ export const format = (date?: string | number | Date | null | undefined, pattern
         .replace("yyyy", String(d.getFullYear()))
         .replace("yy", `00${d.getFullYear()}`.slice(-2))
         .replace("MM", `0${d.getMonth() + 1}`.slice(-2))
-        .replace("M", String(d.getMonth()))
+        .replace("M", String(d.getMonth() + 1))
         .replace("dd", `0${d.getDate()}`.slice(-2))
         .replace("d", String(d.getDate()))
         .replace("hh", `0${d.getHours()}`.slice(-2))
@@ -36,7 +36,7 @@ export const format = (date?: string | number | Date | null | undefined, pattern
         .replace("ss", `0${d.getSeconds()}`.slice(-2))
         .replace("s", String(d.getSeconds()))
         .replace("SSS", `00${d.getMilliseconds()}`.slice(-3))
-        .replace("SS", `0${d.getMilliseconds()}`.slice(-2))
+        .replace("SS", `00${d.getMilliseconds()}`.slice(-3).slice(2))
         .replace("S", String(d.getMilliseconds()))
         .replace("w", (week === "ja" ? week_ja : (week === "en" ? week_en : week))[d.getDay()]);
 };
