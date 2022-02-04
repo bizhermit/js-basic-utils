@@ -1,3 +1,19 @@
+export const format = (value: number | null | undefined, options?: { thou?: boolean; fpad?: number; }) => {
+    if (value == null || typeof value !== "number") return undefined;
+    let ret = value.toString(10);
+    const s = ret.split(".");
+    ret = options?.thou !== false ? s[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : s[0];
+    const f = s[1] || "";
+    if (options?.fpad) {
+        ret += "." + f;
+        const c = options.fpad - f.length;
+        if (c > 0) ret += "0".repeat(c);
+    } else if (f) {
+        ret += "." + f;
+    }
+    return ret;
+};
+
 const NumberUtils = {
     isNumber: (value: unknown): value is number => {
         return typeof value === "number";
@@ -5,30 +21,11 @@ const NumberUtils = {
     isNull: (value: number | null | undefined): value is null | undefined => {
         return value == null;
     },
-    thousandsSeparator: (value: number | null | undefined, whenNullValue = "") => {
-        if (value == null) return whenNullValue;
-        if (typeof value === "string") return Number(value).toLocaleString("ja");
-        return value.toLocaleString("ja");
-    },
-    removeThousandsSeparator: (value: string | null | undefined, whenNullOrEmptyValue = 0) => {
-        if (value == null || value === "") return whenNullOrEmptyValue;
+    format,
+    removeThousandsSeparator: (value: string | null | undefined) => {
+        if (value == null || value.length === 0) return undefined;
         if (typeof value === "number") return value;
         return Number(value.replace(/,/g, ""));
-    },
-    format: (value: number | null | undefined, options?: { nullVal?: string; thou?: boolean; fpad?: number; }) => {
-        if (value == null || typeof value !== "number") return options?.nullVal;
-        let ret = value.toString(10);
-        const s = ret.split(".");
-        ret = options?.thou !== false ? s[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : s[0];
-        const f = s[1] || "";
-        if (options?.fpad) {
-            ret += "." + f;
-            const c = options.fpad - f.length;
-            if (c > 0) ret += "0".repeat(c);
-        } else if (f) {
-            ret += "." + f;
-        }
-        return ret;
     },
     add: (value1: number | null | undefined, value2: number | null | undefined) => {
         if (value2 == null) return value1 ?? 0;

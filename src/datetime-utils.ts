@@ -3,7 +3,7 @@ export const week_en = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 export const month_en = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 export const convert = (date: string | number | Date | null | undefined) => {
-    if (date == null) return null;
+    if (date == null) return undefined;
     if (typeof date === "string") {
         let ctx = date.match(/^(\d{4})(\d{2}|$)(\d{2}|$)(\d{2}|$)(\d{2}|$)(\d{2}|$)(\d{3}|$)/);
         if (!ctx) ctx = date.match(/^(\d+)?(?:-|\/|年|$)(\d+)?(?:-|\/|月|$)(\d+)?(?:\s*|日\s*|T|$)(\d+)?(?::|時|$)(\d+)?(?::|分|$)(\d+)?(?:.|秒|$)(\d+)?(?:.*|$)/);
@@ -13,7 +13,7 @@ export const convert = (date: string | number | Date | null | undefined) => {
             const re = new RegExp(`^${ctx[1]}`, "i");
             return new Date(Number(ctx[3]), Math.max(month_en.findIndex(v => re.exec(v)), 0), Number(ctx[2]), Number(ctx[4]), Number(ctx[5]), Number(ctx[6]));
         }
-        return null;
+        return undefined;
     }
     if (typeof date === "number") return new Date(date);
     return new Date(date);
@@ -21,7 +21,7 @@ export const convert = (date: string | number | Date | null | undefined) => {
 
 export const format = (date?: string | number | Date | null | undefined, pattern = "yyyy-MM-dd", week: Array<string> | "ja" | "en" = week_ja) => {
     const d = convert(date);
-    if (d == null) return "";
+    if (d == null) return undefined;
     return pattern
         .replace("yyyy", String(d.getFullYear()))
         .replace("yy", `00${d.getFullYear()}`.slice(-2))

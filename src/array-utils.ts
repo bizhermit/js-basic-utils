@@ -1,7 +1,15 @@
 const ArrayUtils = {
-    generateArray: <T = unknown>(length: number, initValue: (index: number) => T) => {
+    generateArray: <T = unknown>(length: number, initValue?: T | ((index: number) => T)) => {
         const arr: Array<T> = [];
-        for (let i = 0; i < length; i++) arr.push(initValue(i));
+        if (initValue == null) {
+            for (let i = 0; i < length; i++) arr.push(undefined as any);
+        } else {
+            if (typeof initValue === "function") {
+                for (let i = 0; i < length; i++) arr.push((initValue as any)(i));
+            } else {
+                for (let i = 0; i < length; i++) arr.push(initValue);
+            }
+        }
         return arr;
     },
     replaceValue: <T = unknown, U = T>(array: Array<T>, replace: (value: T) => U, copy = false) => {
