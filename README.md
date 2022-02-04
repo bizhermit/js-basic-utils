@@ -17,18 +17,18 @@ npm i @bizhermit/basic-utils
 
 ### Example
 ```ts
-import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
+import StringUtils, { isEmpty } from "@bizhermit/basic-utils/dist/string-utils";
 import NumberUtils from "@bizhermit/basic-utils/dist/number-utils";
 import DatetimeUtils from "@bizhermit/basic-utils/dist/datetime-utils";
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 
-console.log(StringUtils.isNullOrEmpty(""));
+console.log(isEmpty(""));
 console.log(StringUtils.generateUuidV4());
 
 console.log(NumberUtils.format(1234567.89, { fpad: 3 }));
 console.log(NumberUtils.adds(1.1, 1.2, 1.3));
 
-console.log(DatetimeUtils.convertDateToString(new Date, "yyyy/MM/dd"));
+console.log(DatetimeUtils.format("2022-02-05", "yyyy/MM/dd"));
 console.log(DatetimeUtils.equalDate(new Date(2022, 0, 31), new Date(2022, 1, 0)));
 
 console.log(ArrayUtils.generateArray(24, (index) => index * 10));
