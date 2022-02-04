@@ -379,8 +379,8 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   * `m` minutes
   * `ss` seconds (zero padding as two digits)
   * `s` seconds
-  * `SSS` zero (zero padding as three digits)
-  * `SS` zero (zero padding as three digits and first two digits)
+  * `SSS` milliseconds (zero padding as three digits)
+  * `SS` milliseconds (zero padding as three digits and first two digits)
   * `S` milliseconds
   * `w` week
 
