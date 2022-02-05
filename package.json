@@ -26,7 +26,7 @@
     "postpublish": "git tag && git push origin tags/v%npm_package_version%"
   },
   "devDependencies": {
-    "@bizhermit/license": "^1.0.6",
+    "@bizhermit/license": "^1.0.8",
     "@bizhermit/minifier": "^1.0.4",
     "cpx": "^1.5.0",
     "rimraf": "^3.0.2",
