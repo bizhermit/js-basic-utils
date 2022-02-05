@@ -362,6 +362,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   DatetimeUtils.convert("2022-10-20 12:34:56.123");       // => 2022-10-20T12:34:56.123Z
   DatetimeUtils.convert("2022/10/20T12:34:56.123");       // => 2022-10-20T12:34:56.123Z
   DatetimeUtils.convert("2022年10月20日 12時34分56秒123"); // => 2022-10-20T12:34:56.123Z
+  DatetimeUtils.convert(new Date(2022, 9, 20));           // => 2022-10-20T00:00:00.000Z
   ```
 
 * ***format(date?: string | number | Date | null | undefined, pattern?: string, week?: Array<string> | "ja" | "en") => string***  
@@ -385,11 +386,12 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   * `w` week
 
   ```ts
-  const date = Date(2022, 3, 5, 6, 7, 8, 1);
+  const date = Date(2022, 1, 5, 6, 7, 8, 1);
   DatetimeUtils.format(date); // => "2022-02-05"
   DatetimeUtils.format(date, "yyyy/M/d"); // "2022/2/5"
   DatetimeUtils.format(date, "yyyy年M月d日(w)"); // "2022年2月5日(土)"
   DatetimeUtils.format(date, "yyyy-MM-dd(w) hh:mm:ss.SS", "en"); // "2022-02-05(Sat) 06:07:08.00"
+  DatetimeUtils.format("2022-02-05", "yyyy/MM/dd"); // => "2022/02/05"
   ```
 
 
