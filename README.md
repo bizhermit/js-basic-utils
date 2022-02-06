@@ -505,7 +505,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   return new array object.
   ```ts
   ArrayUtils.generateArray(5); // => [undefined, undefined, undefined, undefined, undefined]
-  ArrayUtils.generateArray("string"); // => ["string", "string", "string", "string", "string"]
+  ArrayUtils.generateArray(5, "string"); // => ["string", "string", "string", "string", "string"]
   ArrayUtils.generateArray(5, (index) => {
     return index * 5;
   }); // => [0, 5, 10, 15, 20];
