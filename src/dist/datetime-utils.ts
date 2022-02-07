@@ -47,10 +47,11 @@ const DatetimeUtils = {
     copy: (date: Date) => {
         return date == null ? date : new Date(date);
     },
-    removeTime: (date: Date) => {
+    removeTime: (date: Date, copy = false) => {
         if (date == null) return date;
-        date.setHours(0, 0, 0, 0);
-        return date;
+        let d = copy ? DatetimeUtils.copy(date) : date;
+        d.setHours(0, 0, 0, 0);
+        return d;
     },
     getDate: () => {
         return DatetimeUtils.removeTime(new Date());
