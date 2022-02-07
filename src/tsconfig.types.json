@@ -2,9 +2,9 @@
   "extends": "./tsconfig.json",
   "include": ["../@bizhermit/basic-utils/**/*.ts", "../@bizhermit/basic-utils/**/*.tsx"],
   "compilerOptions": {
-    "outFile": "../dist/index.d.ts",
     "emitDeclarationOnly": true,
     "isolatedModules": false,
-    "rootDir": "../"
+    "rootDir": "../",
+    "outFile": "../dist/index.d.ts"
   }
 }

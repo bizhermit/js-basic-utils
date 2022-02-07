@@ -9,8 +9,10 @@
     "strictNullChecks": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "outDir": "../dist",
+    "rootDir": "./",
+    "outDir": "../",
     "declaration": true
   },
-  "include": ["**/*.ts"]
+  "exclude": ["../bin", "../dist"],
+  "include": ["bin/**/*.ts", "dist/**/*.ts"]
 }
