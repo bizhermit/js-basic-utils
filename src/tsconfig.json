@@ -13,6 +13,6 @@
     "outDir": "../",
     "declaration": true
   },
-  "exclude": ["../dist"],
-  "include": ["dist/**/*.ts"]
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts"]
 }
