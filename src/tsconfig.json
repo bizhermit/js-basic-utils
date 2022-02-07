@@ -13,6 +13,6 @@
     "outDir": "../",
     "declaration": true
   },
-  "exclude": ["../bin", "../dist"],
-  "include": ["bin/**/*.ts", "dist/**/*.ts"]
+  "exclude": ["../dist"],
+  "include": ["dist/**/*.ts"]
 }
