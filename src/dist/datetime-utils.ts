@@ -41,6 +41,8 @@ export const format = (date?: string | number | Date | null | undefined, pattern
         .replace("w", (week === "ja" ? week_ja : (week === "en" ? week_en : week))[d.getDay()]);
 };
 
+const getCopyOrCurrent = (date?: Date) => date ? DatetimeUtils.copy(date) : new Date();
+
 const DatetimeUtils = {
     convert,
     format,
@@ -90,16 +92,16 @@ const DatetimeUtils = {
         return new Date(date.getFullYear(), 11, 31);
     },
     getPrevDate: (date?: Date) => {
-        return DatetimeUtils.addDay(date ?? new Date(), -1);
+        return DatetimeUtils.addDay(getCopyOrCurrent(date), -1);
     },
     getNextDate: (date?: Date) => {
-        return DatetimeUtils.addDay(date ?? new Date(), 1);
+        return DatetimeUtils.addDay(getCopyOrCurrent(date), 1);
     },
     getPrevWeekDate: (date?: Date) => {
-        return DatetimeUtils.addDay(date ?? new Date(), -7);
+        return DatetimeUtils.addDay(getCopyOrCurrent(date), -7);
     },
     getNextWeekDate: (date?: Date) => {
-        return DatetimeUtils.addDay(date ?? new Date(), 7);
+        return DatetimeUtils.addDay(getCopyOrCurrent(date), 7);
     },
     getPrevMonthDate: (date = new Date(), sameYearMonth = false) => {
         const ret = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate())
