@@ -89,17 +89,17 @@ const DatetimeUtils = {
     getLastDateAtYear: (date = new Date()) => {
         return new Date(date.getFullYear(), 11, 31);
     },
-    getPrevDate: (date = new Date()) => {
-        return DatetimeUtils.addDay(date, -1);
+    getPrevDate: (date?: Date) => {
+        return DatetimeUtils.addDay(date ?? new Date(), -1);
     },
-    getNextDate: (date = new Date()) => {
-        return DatetimeUtils.addDay(date, 1);
+    getNextDate: (date?: Date) => {
+        return DatetimeUtils.addDay(date ?? new Date(), 1);
     },
-    getPrevWeekDate: (date = new Date()) => {
-        return DatetimeUtils.addDay(date, -7);
+    getPrevWeekDate: (date?: Date) => {
+        return DatetimeUtils.addDay(date ?? new Date(), -7);
     },
-    getNextWeekDate: (date = new Date()) => {
-        return DatetimeUtils.addDay(date, 7);
+    getNextWeekDate: (date?: Date) => {
+        return DatetimeUtils.addDay(date ?? new Date(), 7);
     },
     getPrevMonthDate: (date = new Date(), sameYearMonth = false) => {
         const ret = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate())
