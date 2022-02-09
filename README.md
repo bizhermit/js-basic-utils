@@ -350,7 +350,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 
 ## DatetimeUtils
 
-* ***convert(date: string | number | Date | null | undefined) => Date | null***  
+* ***convert(date: string | number | Date | null | undefined) => Date | undefined***  
   return date.
   ```ts
   DatetimeUtils.convert("2022");                          // => 2022-01-01T00:00:00.000Z
@@ -365,7 +365,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   DatetimeUtils.convert(new Date(2022, 9, 20));           // => 2022-10-20T00:00:00.000Z
   ```
 
-* ***format(date?: string | number | Date | null | undefined, pattern?: string, week?: Array<string> | "ja" | "en") => string***  
+* ***format(date?: string | number | Date | null | undefined, pattern?: string, week?: Array<string> | "ja" | "en") => string | undefined***  
   return formated string.
 
   * `yyyy` year
