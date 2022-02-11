@@ -257,7 +257,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   NumberUtils.isNull(100);       // => false
   ```
 
-* ***format(value: number | null | undefined, options?: { thou?: boolean | undefined; fpad?: number | undefined; } | undefined) => string | undefined***  
+* ***format(value: number | null | undefined, options?: { thou?: boolean; fpad?: number; }) => string | undefined***  
   number format.
   ```ts
   NumberUtils.format(1234567);                  // => "1,234,567"
@@ -501,7 +501,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 
 ## ArrayUtils
 
-* **generateArray<T = unknown>(length: number, initValue?: T | ((index: number) => T) | undefined) => T[]**  
+* **generateArray<T = unknown>(length: number, initValue?: T | ((index: number) => T)) => T[]**  
   return new array object.
   ```ts
   ArrayUtils.generateArray(5); // => [undefined, undefined, undefined, undefined, undefined]
