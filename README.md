@@ -283,9 +283,9 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 * **adds(...values: Array<number | null | undefined>) => number**  
   return multi added value.
   ```ts
-  NumberUtils.add(1.1, 1.2, 1.3); // => 3.6
-  NumberUtils.add([1.1, 1.2, 1.3]); // => 3.6
-  NumberUtils.add([1.1, null, 1.3]); // => 2.4
+  NumberUtils.adds(1.1, 1.2, 1.3); // => 3.6
+  NumberUtils.adds([1.1, 1.2, 1.3]); // => 3.6
+  NumberUtils.adds([1.1, null, 1.3]); // => 2.4
   ```
 
 * **minus(value1: number | null | undefined, value2: number | null | undefined) => number**  
