@@ -18,6 +18,18 @@ const StringUtils = {
     isNotEmpty: (value: string | null | undefined): value is string => {
         return !isEmpty(value);
     },
+    isAllEmpty: (...values: Array<string | null | undefined>) => {
+        for (let value of values) {
+            if (!isEmpty(value)) return false;
+        }
+        return true;
+    },
+    isAnyEmpty: (...values: Array<string | null | undefined>) => {
+        for (let value of values) {
+            if (isEmpty(value)) return true;
+        }
+        return false;
+    },
     notNull: (value: string | null | undefined, whenNullValue: string) => {
         return isNull(value) ? whenNullValue : value;
     },

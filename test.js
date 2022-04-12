@@ -5,6 +5,11 @@ const NumberUtils = require("./dist/number-utils").default;
 const DatetimeUtils = require("./dist/datetime-utils").default;
 const ArrayUtils = require("./dist/array-utils").default;
 
+console.log(StringUtils.isAllEmpty(null, "", ""));
+console.log(StringUtils.isAllEmpty(null, "1", ""));
+console.log(StringUtils.isAnyEmpty("1", "2", "3"));
+console.log(StringUtils.isAnyEmpty("1", "2", ""));
+
 const date = new Date(2022, 3, 5, 6, 7, 8, 1);
 console.log(DatetimeUtils.getPrevDate(date));
 console.log(DatetimeUtils.getPrevDate());
