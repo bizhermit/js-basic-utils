@@ -83,18 +83,18 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isNotEmpty("string");  // => true
   ```
 
-* **isAllEmpty(...value: Array<string | null | undefined>) => value is string**  
+* **isAllEmpty(...value: Array<string | null | undefined>) => boolean**  
   return values is all empty.
   ```ts
   StringUtils.isAllEmpty(null, "", "");  // => true
   StringUtils.isAllEmpty(null, "", "3"); // => false
   ```
 
-* **isAnyEmpty(...value: Array<string | null | undefined>) => value is string**  
+* **isAnyEmpty(...value: Array<string | null | undefined>) => boolean**  
   return values is any empty.
   ```ts
-  StringUtils.isAllEmpty("1", "2", "3"); // => false
-  StringUtils.isAllEmpty("1", "", "3");  // => true
+  StringUtils.isAnyEmpty("1", "2", "3"); // => false
+  StringUtils.isAnyEmpty("1", "", "3");  // => true
   ```
 
 * **notNull(value: string | null | undefined, whenNullValue: string) => string**  
