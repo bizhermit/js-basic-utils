@@ -305,7 +305,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 * **minus(value1: number | null | undefined, value2: number | null | undefined) => number**  
   return minus value.
   ```ts
-  NumberUtils.minus(2.5 - 1.1); // => 1.4
+  NumberUtils.minus(2.5, 1.1); // => 1.4
   ```
 
 * **getFloatPosition(value: number | null | undefined) => number**  
