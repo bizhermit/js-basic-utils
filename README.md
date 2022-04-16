@@ -5,6 +5,7 @@ Give to the basic types utilities.
 * NumberUtils
 * DatetimeUtils
 * ArrayUtils
+* PromiseUtils
 
 ---
 
@@ -543,3 +544,41 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   console.log(arr3); // => [1, 2, 3, 4, 5]
   console.log(arr4); // => ["5", "10", "15", "20", "25"]
   ```
+
+---
+
+## PromiseUtils
+
+* **awaitAll(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; }) => Promise\<Array\<any>>**
+  wait all promise. regardless of the results.  
+  ```ts
+  const promises = [];
+  for (let i = 0; i < 10; i++) {
+    promises.push(new Promise<void>(resolve => {
+      setTimeout(resolve, index * 1000);
+    }));
+  }
+
+  const promiseFunc1 = () => {
+    return new Promise<void>(resolve => {
+      setTimeout(resolve, 100);
+    });
+  };
+  promise.push(promiseFunc1);
+
+  const promiseFunc2 = async () => {
+    await promiseFunc1();
+    throw new Error("error");
+  };
+  promise.push(promiseFunc2);
+
+  PromiseUtils.awaitAll(promises).then((errors) => {
+    console.log(errors); // [Error: error ...]
+  });
+  ```
+* **awaitAny(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>**
+  wait any promise. regardless of the results.  
+* **awaitAnySucceeded(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>**
+  wait any succeeded(then) promise.
+* **awaitAnyFailed(functions: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<any>**
+  wait any failed(catch) promise.

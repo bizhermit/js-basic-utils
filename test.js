@@ -4,17 +4,71 @@ const StringUtils = require("./dist/string-utils").default;
 const NumberUtils = require("./dist/number-utils").default;
 const DatetimeUtils = require("./dist/datetime-utils").default;
 const ArrayUtils = require("./dist/array-utils").default;
+const PromiseUtils = require("./dist/promise-utils").default;
 
-console.log(StringUtils.isAllEmpty(null, "", ""));
-console.log(StringUtils.isAllEmpty(null, "1", ""));
-console.log(StringUtils.isAnyEmpty("1", "2", "3"));
-console.log(StringUtils.isAnyEmpty("1", "2", ""));
-console.log(StringUtils.isAnyEmpty(...["1", "2", ""]));
+const async1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log("--- 1");
+        // resolve();
+        reject("1");
+    }, 1000);
+});
+const async2 = (num) => {
+    const n = num ?? 2;
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`--- ${n}`);
+            resolve();
+            // reject();
+        }, 1000 * n);
+    });
+};
+const async3 = async () => {
+    await async2(3);
+    throw new Error("error 3");
+};
+// (async () => {
+//     const errors = await PromiseUtils.awaitAll([async1, async2, async3]);
+//     console.log("await all returned", errors);
+// })();
+// PromiseUtils.awaitAll([async1, async2, async3]).then((errors) => {
+//     console.log("await all returned", errors);
+// });
+// (async () => {
+//     console.log("await any");
+//     await PromiseUtils.awaitAny([async1, async2, async3], { finally: (errors) => {
+//         console.log("await any fin", errors);
+//     }});
+//     console.log("await any returned");
+// })();
+// PromiseUtils.awaitAny([async1, async2, async3], { finally: (errors) => {
+//     console.log("await any fin", errors);
+// }}).then(() => {
+//     console.log("await any returned");
+// });
+// (async () => {
+//     await PromiseUtils.awaitAnySucceeded([async1, async2, async3], { finally: (errors) => {
+//         console.log("await any succeeded fin", errors);
+//     }});
+//     console.log("await any succeeded returned");
+// })();
+(async () => {
+    const err = await PromiseUtils.awaitAnyFailed([async1, async2, async3], { finally: (errors) => {
+        console.log("await any failed fin", errors);
+    }});
+    console.log("await any failed returned", err);
+})();
 
-const date = new Date(2022, 3, 5, 6, 7, 8, 1);
-console.log(DatetimeUtils.getPrevDate(date));
-console.log(DatetimeUtils.getPrevDate());
-console.log(DatetimeUtils.getPrevDate(new Date()));
+// console.log(StringUtils.isAllEmpty(null, "", ""));
+// console.log(StringUtils.isAllEmpty(null, "1", ""));
+// console.log(StringUtils.isAnyEmpty("1", "2", "3"));
+// console.log(StringUtils.isAnyEmpty("1", "2", ""));
+// console.log(StringUtils.isAnyEmpty(...["1", "2", ""]));
+
+// const date = new Date(2022, 3, 5, 6, 7, 8, 1);
+// console.log(DatetimeUtils.getPrevDate(date));
+// console.log(DatetimeUtils.getPrevDate());
+// console.log(DatetimeUtils.getPrevDate(new Date()));
 // console.log(DatetimeUtils.format(date, "yyyy/MM/dd(w)"))
 // console.log(StringUtils.isNull(null));
 // console.log(StringUtils.isNull(undefined));
