@@ -5,6 +5,7 @@ Give to the basic types utilities.
 * NumberUtils
 * DatetimeUtils
 * ArrayUtils
+* PromiseUtils
 
 ---
 
