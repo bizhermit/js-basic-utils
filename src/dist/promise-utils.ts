@@ -1,5 +1,5 @@
 const PromiseUtils = {
-    awaitAll: (promises: Array<Promise<void> | (() => Promise<any>)>, options?: { listenInterval?: number; }) => {
+    awaitAll: (promises: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; }) => {
         return new Promise<Array<any>>((resolve, reject) => {
             try {
                 let count = 0;
@@ -25,7 +25,7 @@ const PromiseUtils = {
             }
         });
     },
-    awaitAny: (promises: Array<Promise<void> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
+    awaitAny: (promises: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
         return new Promise<void>((resolve, reject) => {
             try {
                 let count = 0;
@@ -55,7 +55,7 @@ const PromiseUtils = {
             }
         });
     },
-    awaitAnySucceeded: (promises: Array<Promise<void> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
+    awaitAnySucceeded: (promises: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
         return new Promise<void>((resolve, reject) => {
             try {
                 let count = 0, sCount = 0;
@@ -87,7 +87,7 @@ const PromiseUtils = {
             }
         });
     },
-    awaitAnyFailed: (functions: Array<Promise<void> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
+    awaitAnyFailed: (functions: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
         return new Promise<any>((resolve, reject) => {
             try {
                 let count = 0;

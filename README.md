@@ -576,9 +576,9 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
     console.log(errors); // [Error: error ...]
   });
   ```
-* **awaitAny(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>**
+* **awaitAny(promises: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>**
   wait any promise. regardless of the results.  
-* **awaitAnySucceeded(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>**
+* **awaitAnySucceeded(promises: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>**
   wait any succeeded(then) promise.
-* **awaitAnyFailed(functions: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<any>**
+* **awaitAnyFailed(functions: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<any>**
   wait any failed(catch) promise.
