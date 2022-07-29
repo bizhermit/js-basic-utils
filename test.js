@@ -6,6 +6,10 @@ const DatetimeUtils = require("./package/datetime-utils").default;
 const ArrayUtils = require("./package/array-utils").default;
 const PromiseUtils = require("./package/promise-utils").default;
 
+console.log(StringUtils.fillLeft("test", 10, "0"));
+console.log(StringUtils.fillRight("test", 10, "0"))
+console.log(StringUtils.fillLeft("testtest", 5, "0"))
+
 const async1 = new Promise((resolve, reject) => {
     setTimeout(() => {
         console.log("--- 1");
