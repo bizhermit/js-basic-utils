@@ -138,6 +138,20 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.join(":", ["value1", "value2", null, "value4"]);  // => "value1:value2:value4"
   ```
 
+* **fillLeft: (value: string | null | undefined, length: number, fillStr?: string) => string;**
+  return a string with the left side filled with `fillStr`.
+  ```ts
+  StringUtils.fillLeft("12345", 10, "0"); // => "0000012345"
+  StringUtils.fillLeft("12345", 4, "0"); // => "12345"
+  ```
+
+* **fillRight: (value: string | null | undefined, length: number, fillStr?: string) => string;**
+  return a string with the right side filled with `fillStr`.
+  ```ts
+  StringUtils.fillRight("12345", 10, "0"); // => "1234500000"
+  StringUtils.fillRight("12345", 4, "0"); // => "12345"
+  ```
+
 * **isHalfWidthNumeric(value: string | null | undefined) => boolean**  
   return value is half width numeric.
   ```ts

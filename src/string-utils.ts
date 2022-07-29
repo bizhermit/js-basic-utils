@@ -49,6 +49,16 @@ const StringUtils = {
     });
     return ret;
   },
+  fillLeft: (value: string | null | undefined, length: number, padStr = " ") => {
+    let v = value || "";
+    if (v.length > length) return v;
+    return (padStr.repeat(length) + v).slice(-length);
+  },
+  fillRight: (value: string | null | undefined, length: number, padStr = " ") => {
+    let v = value || "";
+    if (v.length > length) return v;
+    return (v + padStr.repeat(length)).substring(0, length)
+  },
   isHalfWidthNumeric: (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[0-9]+$/.test(value);
