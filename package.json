@@ -12,15 +12,16 @@
   },
   "author": "Senda Ryoichi <rsenda@bizhermit.com> (https://bizhermit.com)",
   "homepage": "https://bizhermit.com",
-  "license": "MIT",  
+  "license": "MIT",
   "scripts": {
     "dev": "node test",
     "license": "npx rimraf CREDIT && npx license -o CREDIT --returnError",
-    "build": "npm run license && npx rimraf package && npx tsc -p src/tsconfig.json && npx minifier package"
+    "build": "npm run license && npx rimraf package && npx tsc -p src/tsconfig.json && npx minifier package && npx npm-package-utils pack"
   },
   "devDependencies": {
     "@bizhermit/license": "^1.0.9",
     "@bizhermit/minifier": "^1.0.4",
+    "@bizhermit/npm-package-utils": "^0.0.0-rc.0",
     "cpx": "^1.5.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.5.4"
