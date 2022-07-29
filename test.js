@@ -1,10 +1,10 @@
-const { default: arrayUtils } = require("./dist/array-utils");
+const { default: arrayUtils } = require("./package/array-utils");
 
-const StringUtils = require("./dist/string-utils").default;
-const NumberUtils = require("./dist/number-utils").default;
-const DatetimeUtils = require("./dist/datetime-utils").default;
-const ArrayUtils = require("./dist/array-utils").default;
-const PromiseUtils = require("./dist/promise-utils").default;
+const StringUtils = require("./package/string-utils").default;
+const NumberUtils = require("./package/number-utils").default;
+const DatetimeUtils = require("./package/datetime-utils").default;
+const ArrayUtils = require("./package/array-utils").default;
+const PromiseUtils = require("./package/promise-utils").default;
 
 const async1 = new Promise((resolve, reject) => {
     setTimeout(() => {

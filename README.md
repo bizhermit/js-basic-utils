@@ -25,10 +25,10 @@ npm i @bizhermit/basic-utils
 
 ### Example
 ```ts
-import StringUtils, { isEmpty } from "@bizhermit/basic-utils/dist/string-utils";
-import NumberUtils from "@bizhermit/basic-utils/dist/number-utils";
-import DatetimeUtils from "@bizhermit/basic-utils/dist/datetime-utils";
-import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
+import StringUtils, { isEmpty } from "@bizhermit/basic-utils/string-utils";
+import NumberUtils from "@bizhermit/basic-utils/number-utils";
+import DatetimeUtils from "@bizhermit/basic-utils/datetime-utils";
+import ArrayUtils from "@bizhermit/basic-utils/array-utils";
 
 console.log(isEmpty(""));
 console.log(StringUtils.generateUuidV4());
