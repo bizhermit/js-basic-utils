@@ -1,3 +1,10 @@
+<style>
+.caption {
+  font-weight: bold;
+  font-size: 28px;
+}
+</style>
+
 # Basic types utilities
 
 Give to the basic types utilities.
@@ -37,7 +44,8 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 
 ---
 
-## StringUtils
+<details>
+<summary class="caption">StringUtils</summary>
 
 * **isString(value: unknown) => value is string**  
   return value is string.
@@ -250,9 +258,12 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isUuidV4("uuidV4"); // => false
   ```
 
+</details>
+
 ---
 
-## NumberUtils
+<details>
+<summary class="caption">NumberUtils</summary>
 
 * **isNumber(value: unknown) => value is number**  
   return value is number object.
@@ -361,9 +372,12 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   NumberUtils.average(10, 20, 30, 40, null); // => 20
   ```
 
+</details>
+
 ---
 
-## DatetimeUtils
+<details>
+<summary class="caption">DatetimeUtils</summary>
 
 * ***convert(date: string | number | Date | null | undefined) => Date | undefined***  
   return date.
@@ -408,7 +422,6 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   DatetimeUtils.format(date, "yyyy-MM-dd(w) hh:mm:ss.SS", "en"); // "2022-02-05(Sat) 06:07:08.00"
   DatetimeUtils.format("2022-02-05", "yyyy/MM/dd"); // => "2022/02/05"
   ```
-
 
 * **copy(date: Date) => Date**  
   return another date object.
@@ -512,9 +525,12 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 * **validContext(before: Date | null | undefined, after: Date | null | undefined) => boolean**  
   return valid before after.
 
+</details>
+
 ---
 
-## ArrayUtils
+<details>
+<summary class="caption">ArrayUtils</summary>
 
 * **generateArray<T = unknown>(length: number, initValue?: T | ((index: number) => T)) => T[]**  
   return new array object.
@@ -545,9 +561,12 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   console.log(arr4); // => ["5", "10", "15", "20", "25"]
   ```
 
+</details>
+
 ---
 
-## PromiseUtils
+<details>
+<summary class="caption">PromiseUtils</summary>
 
 * **awaitAll(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; }) => Promise\<Array\<any>>**
   wait all promise. regardless of the results.  
@@ -582,3 +601,5 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   wait any succeeded(then) promise.
 * **awaitAnyFailed(functions: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<any>**
   wait any failed(catch) promise.
+
+</details>
