@@ -10,7 +10,7 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
     "rootDir": "./",
-    "outDir": "../",
+    "outDir": "../package",
     "declaration": true
   },
   "exclude": ["node_modules"],
