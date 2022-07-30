@@ -1,10 +1,3 @@
-<style>
-.caption {
-  font-weight: bold;
-  font-size: 28px;
-}
-</style>
-
 # Basic types utilities
 
 Give to the basic types utilities.
@@ -45,7 +38,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary class="caption">StringUtils</summary>
+<summary style="font-weight: bold;font-size: 28px;">StringUtils</summary>
 
 * **isString(value: unknown) => value is string**  
   return value is string.
@@ -277,7 +270,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary class="caption">NumberUtils</summary>
+<summary style="font-weight: bold;font-size: 28px;">NumberUtils</summary>
 
 * **isNumber(value: unknown) => value is number**  
   return value is number object.
@@ -391,7 +384,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary class="caption">DatetimeUtils</summary>
+<summary style="font-weight: bold;font-size: 28px;">DatetimeUtils</summary>
 
 * ***convert(date: string | number | Date | null | undefined) => Date | undefined***  
   return date.
@@ -544,7 +537,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary class="caption">ArrayUtils</summary>
+<summary style="font-weight: bold;font-size: 28px;">ArrayUtils</summary>
 
 * ***generateArray<T = unknown>(length: number, initValue?: T | ((index: number) => T)) => T[]***  
   return new array object.
@@ -580,7 +573,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary class="caption">PromiseUtils</summary>
+<summary style="font-weight: bold;font-size: 28px;">PromiseUtils</summary>
 
 * ***awaitAll(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; }) => Promise\<Array\<any>>***  
   wait all promise. regardless of the results.  
