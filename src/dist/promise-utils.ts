@@ -1,5 +1,6 @@
-const PromiseUtils = {
-  awaitAll: (promises: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; }) => {
+namespace PromiseUtils {
+
+  export const awaitAll = (promises: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; }) => {
     return new Promise<Array<any>>((resolve, reject) => {
       try {
         let count = 0;
@@ -24,8 +25,9 @@ const PromiseUtils = {
         reject(err);
       }
     });
-  },
-  awaitAny: (promises: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
+  };
+
+  export const awaitAny = (promises: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
     return new Promise<void>((resolve, reject) => {
       try {
         let count = 0;
@@ -54,8 +56,9 @@ const PromiseUtils = {
         reject(err);
       }
     });
-  },
-  awaitAnySucceeded: (promises: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
+  };
+
+  export const awaitAnySucceeded = (promises: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
     return new Promise<void>((resolve, reject) => {
       try {
         let count = 0, sCount = 0;
@@ -86,8 +89,9 @@ const PromiseUtils = {
         reject(err);
       }
     });
-  },
-  awaitAnyFailed: (functions: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
+  };
+
+  export const awaitAnyFailed = (functions: Array<Promise<any> | (() => Promise<any>)>, options?: { listenInterval?: number; finally?: (errors: Array<any>) => void; }) => {
     return new Promise<any>((resolve, reject) => {
       try {
         let count = 0;
@@ -116,7 +120,8 @@ const PromiseUtils = {
         reject(err);
       }
     });
-  },
+  };
+
 };
 
 export default PromiseUtils;

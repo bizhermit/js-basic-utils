@@ -1,45 +1,52 @@
-export const isNull = (value: string | null | undefined): value is null | undefined => {
-  return value == null;
-};
+namespace StringUtils {
 
-export const isEmpty = (value: string | null | undefined): value is null | undefined => {
-  return value == null || value.length === 0;
-};
+  export const isNull = (value: string | null | undefined): value is null | undefined => {
+    return value == null;
+  };
 
-const StringUtils = {
-  isString: (value: unknown): value is string => {
+  export const isEmpty = (value: string | null | undefined): value is null | undefined => {
+    return value == null || value.length === 0;
+  };
+
+  export const isString = (value: unknown): value is string => {
     return typeof value === "string";
-  },
-  isNull,
-  isEmpty,
-  isNotNull: (value: string | null | undefined): value is string => {
+  };
+
+  export const isNotNull = (value: string | null | undefined): value is string => {
     return !isNull(value);
-  },
-  isNotEmpty: (value: string | null | undefined): value is string => {
+  };
+
+  export const isNotEmpty = (value: string | null | undefined): value is string => {
     return !isEmpty(value);
-  },
-  isAllEmpty: (...values: Array<string | null | undefined>) => {
+  };
+
+  export const isAllEmpty = (...values: Array<string | null | undefined>) => {
     for (let value of values) {
       if (!isEmpty(value)) return false;
     }
     return true;
-  },
-  isAnyEmpty: (...values: Array<string | null | undefined>) => {
+  };
+
+  export const isAnyEmpty = (...values: Array<string | null | undefined>) => {
     for (let value of values) {
       if (isEmpty(value)) return true;
     }
     return false;
-  },
-  notNull: (value: string | null | undefined, whenNullValue: string) => {
+  };
+
+  export const notNull = (value: string | null | undefined, whenNullValue: string) => {
     return isNull(value) ? whenNullValue : value;
-  },
-  notEmpty: (value: string | null | undefined, whenEmptyValue: string) => {
+  };
+
+  export const notEmpty = (value: string | null | undefined, whenEmptyValue: string) => {
     return isEmpty(value) ? whenEmptyValue : value;
-  },
-  contains: (value: string | null | undefined, search: string): boolean => {
+  };
+
+  export const contains = (value: string | null | undefined, search: string): boolean => {
     return isEmpty(value) ? false : value.indexOf(search) != -1;
-  },
-  join: (joinStr: string, ...values: Array<string | null | undefined>) => {
+  };
+
+  export const join = (joinStr: string, ...values: Array<string | null | undefined>) => {
     let ret = "";
     const js = joinStr ?? " ";
     values.forEach(v => {
@@ -48,58 +55,71 @@ const StringUtils = {
       ret += v;
     });
     return ret;
-  },
-  fillLeft: (value: string | null | undefined, length: number, padStr = " ") => {
+  };
+
+  export const fillLeft = (value: string | null | undefined, length: number, padStr = " ") => {
     let v = value || "";
     if (v.length > length) return v;
     return (padStr.repeat(length) + v).slice(-length);
-  },
-  fillRight: (value: string | null | undefined, length: number, padStr = " ") => {
+  };
+
+  export const fillRight = (value: string | null | undefined, length: number, padStr = " ") => {
     let v = value || "";
     if (v.length > length) return v;
     return (v + padStr.repeat(length)).substring(0, length)
-  },
-  isHalfWidthNumeric: (value: string | null | undefined) => {
+  };
+
+  export const isHalfWidthNumeric = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[0-9]+$/.test(value);
-  },
-  isHalfWidthAlphabet: (value: string | null | undefined) => {
+  };
+
+  export const isHalfWidthAlphabet = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[a-zA-Z]+$/.test(value);
-  },
-  isHalfWidthSymbols: (value: string | null | undefined) => {
+  };
+
+  export const isHalfWidthSymbols = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[!-/:-@¥[-`{-~]+$/.test(value);
-  },
-  isHalfWidthAlphanumeric: (value: string | null | undefined) => {
+  };
+
+  export const isHalfWidthAlphanumeric = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[a-zA-Z0-9]+$/.test(value);
-  },
-  isHalfWidthAlphanumericAndSymbols: (value: string | null | undefined) => {
+  };
+
+  export const isHalfWidthAlphanumericAndSymbols = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[a-zA-Z0-9!-/:-@¥[-`{-~]+$/.test(value);
-  },
-  isHalfWidthKatakana: (value: string | null | undefined) => {
+  };
+
+  export const isHalfWidthKatakana = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[｡-ﾟ+]+$/.test(value);
-  },
-  isKatakana: (value: string | null | undefined) => {
+  };
+
+  export const isKatakana = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[ァ-ヶ]+$/.test(value);
-  },
-  isFullOrHalfWidthKatakana: (value: string | null | undefined) => {
+  };
+
+  export const isFullOrHalfWidthKatakana = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[｡-ﾟ+ァ-ヶ]+$/.test(value);
-  },
-  isHiragana: (value: string | null | undefined) => {
+  };
+
+  export const isHiragana = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[ぁ-ゞ]+$/.test(value);
-  },
-  isInteger: (value: string | null | undefined) => {
+  };
+
+  export const isInteger = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[+-]?(0|[1-9]\d*)$/.test(value);
-  },
-  isPhoneNumber: (value: string | null | undefined) => {
+  };
+
+  export const isPhoneNumber = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^0\d-\d{4}-\d{4}$/.test(value)
       || /^0\d{3}-\d{2}-\d{4}$/.test(value)
@@ -109,16 +129,19 @@ const StringUtils = {
       || /^\(0\d\)\d{4}-\d{4}$/.test(value)
       || /^\(0\d{3}\)\d{2}-\d{4}$/.test(value)
       || /^0120-\d{3}-\d{3}$/.test(value);
-  },
-  isPostalCode: (value: string | null | undefined) => {
+  };
+
+  export const isPostalCode = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[0-9]{3}-[0-9]{4}$/.test(value) || /^[0-9]{7}$/.test(value);
-  },
-  isMailAddress: (value: string | null | undefined) => {
+  };
+
+  export const isMailAddress = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[A-Za-z0-9][a-zA-Z0-9_.+-]*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]+$/.test(value);
-  },
-  isIpv4Address: (value: string | null | undefined) => {
+  };
+
+  export const isIpv4Address = (value: string | null | undefined) => {
     if (value == null) return false;
     const s = value.split(".");
     if (s.length !== 4) return false;
@@ -128,12 +151,14 @@ const StringUtils = {
       if (num < 0 || num > 255) return false;
     }
     return true;
-  },
-  isIpv6Address: (value: string | null | undefined) => {
+  };
+
+  export const isIpv6Address = (value: string | null | undefined) => {
     if (value == null) return false;
     return /(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/.test(value);
-  },
-  generateUuidV4: () => {
+  };
+
+  export const generateUuidV4 = () => {
     const chars = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".split("");
     for (let i = 0, il = chars.length; i < il; i++) {
       switch (chars[i]) {
@@ -148,10 +173,13 @@ const StringUtils = {
       }
     }
     return chars.join("");
-  },
-  isUuidV4: (value: string | null | undefined) => {
+  };
+
+  export const isUuidV4 = (value: string | null | undefined) => {
     if (value == null) return false;
     return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(value);
-  },
+  };
+
 };
+
 export default StringUtils;
