@@ -38,7 +38,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary style="font-weight: bold;font-size: 28px;">StringUtils</summary>
+<summary style="font-weight:bold;font-size:28px;">StringUtils</summary>
 
 * **isString(value: unknown) => value is string**  
   return value is string.
@@ -270,7 +270,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary style="font-weight: bold;font-size: 28px;">NumberUtils</summary>
+<summary style="font-weight:bold;font-size:28px;">NumberUtils</summary>
 
 * **isNumber(value: unknown) => value is number**  
   return value is number object.
@@ -384,7 +384,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary style="font-weight: bold;font-size: 28px;">DatetimeUtils</summary>
+<summary style="font-weight:bold;font-size:28px;">DatetimeUtils</summary>
 
 * ***convert(date: string | number | Date | null | undefined) => Date | undefined***  
   return date.
@@ -537,7 +537,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary style="font-weight: bold;font-size: 28px;">ArrayUtils</summary>
+<summary style="font-weight:bold;font-size:28px;">ArrayUtils</summary>
 
 * ***generateArray<T = unknown>(length: number, initValue?: T | ((index: number) => T)) => T[]***  
   return new array object.
@@ -573,7 +573,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 ---
 
 <details>
-<summary style="font-weight: bold;font-size: 28px;">PromiseUtils</summary>
+<summary style="font-weight:bold;font-size:28px;">PromiseUtils</summary>
 
 * ***awaitAll(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; }) => Promise\<Array\<any>>***  
   wait all promise. regardless of the results.  
