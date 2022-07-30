@@ -6,7 +6,9 @@
     "type": "git",
     "url": "https://github.com/bizhermit/js-basic-utils.git"
   },
-  "bugs": "https://github.com/bizhermit/js-basic-utils/issues",
+  "bugs": {
+    "url": "https://github.com/bizhermit/js-basic-utils/issues"
+  },
   "author": "Senda Ryoichi <rsenda@bizhermit.com> (https://bizhermit.com)",
   "homepage": "https://bizhermit.com",
   "license": "MIT",
