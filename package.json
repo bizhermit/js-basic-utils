@@ -1,6 +1,6 @@
 {
   "name": "@bizhermit/basic-utils",
-  "version": "2.0.0-rc.0",
+  "version": "2.0.0-rc.1",
   "description": "basic types utilities",
   "repository": {
     "type": "git",
@@ -11,14 +11,13 @@
   "homepage": "https://bizhermit.com",
   "license": "MIT",
   "scripts": {
-    "dev": "node test",
     "license": "npx rimraf CREDIT && npx license -o CREDIT --returnError",
-    "build": "npm run license && npx rimraf package && npx tsc -p src/tsconfig.json && npx minifier package && npx npm-package-utils pack"
+    "build": "npm run license && npx rimraf package && npx tsc -p src/tsconfig.json && npx minifier package && npx npm-package-utils d.ts && npx npm-package-utils pack"
   },
   "devDependencies": {
     "@bizhermit/license": "^1.0.9",
     "@bizhermit/minifier": "^1.0.4",
-    "@bizhermit/npm-package-utils": "^0.0.0-rc.0",
+    "@bizhermit/npm-package-utils": "^0.0.0-rc.6",
     "cpx": "^1.5.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.5.4"

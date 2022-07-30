@@ -25,10 +25,10 @@ npm i @bizhermit/basic-utils
 
 ### Example
 ```ts
-import StringUtils, { isEmpty } from "@bizhermit/basic-utils/string-utils";
-import NumberUtils from "@bizhermit/basic-utils/number-utils";
-import DatetimeUtils from "@bizhermit/basic-utils/datetime-utils";
-import ArrayUtils from "@bizhermit/basic-utils/array-utils";
+import StringUtils, { isEmpty } from "@bizhermit/basic-utils/dist/string-utils";
+import NumberUtils from "@bizhermit/basic-utils/dist/number-utils";
+import DatetimeUtils from "@bizhermit/basic-utils/dist/datetime-utils";
+import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 
 console.log(isEmpty(""));
 console.log(StringUtils.generateUuidV4());
@@ -56,7 +56,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isString(undefined); // => false
   ```
 
-* ***isNull(value: string | null | undefined) => value is null | undefined***  
+* **isNull(value: string | null | undefined) => value is null | undefined**  
   return value is null or undefined.
   ```ts
   StringUtils.isNull(null);      // => true
@@ -92,7 +92,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.isNotEmpty("string");  // => true
   ```
 
-* **isAllEmpty(...value: Array<string | null | undefined>) => boolean**  
+* ***isAllEmpty(...value: Array<string | null | undefined>) => boolean***  
   return values is all empty.
   ```ts
   StringUtils.isAllEmpty(null, "", "");  // => true
@@ -138,14 +138,14 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.join(":", ["value1", "value2", null, "value4"]);  // => "value1:value2:value4"
   ```
 
-* **fillLeft: (value: string | null | undefined, length: number, fillStr?: string) => string;**
+* ***fillLeft: (value: string | null | undefined, length: number, fillStr?: string) => string;***  
   return a string with the left side filled with `fillStr`.
   ```ts
   StringUtils.fillLeft("12345", 10, "0"); // => "0000012345"
   StringUtils.fillLeft("12345", 4, "0"); // => "12345"
   ```
 
-* **fillRight: (value: string | null | undefined, length: number, fillStr?: string) => string;**
+* ***fillRight: (value: string | null | undefined, length: number, fillStr?: string) => string;***  
   return a string with the right side filled with `fillStr`.
   ```ts
   StringUtils.fillRight("12345", 10, "0"); // => "1234500000"
@@ -259,7 +259,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 * **isIpv6Address(value: string | null | undefined) => boolean**  
   return value is ip v6 address.
 
-* **generateUuidV4() => string**  
+* ***generateUuidV4() => string***  
   return uuid ver4.
   ```ts
   StringUtils.generateUuidV4(); // => e.g.) "54fce1e8-7e4e-4112-8b95-f03130e9f822"
@@ -312,7 +312,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   NumberUtils.removeThousandsSeparator("12,345.67"); // => 12345.67
   ```
 
-* **add(value1: number | null | undefined, value2: number | null | undefined) => number**  
+* ***add(value1: number | null | undefined, value2: number | null | undefined) => number***  
   return added value.
   ```ts
   NumberUtils.add(1.1, 1.2);          // => 2.3
@@ -320,7 +320,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   NumberUtils.add(1.1, null);         // => 1.1
   ```
 
-* **adds(...values: Array<number | null | undefined>) => number**  
+* ***adds(...values: Array<number | null | undefined>) => number***  
   return multi added value.
   ```ts
   NumberUtils.adds(1.1, 1.2, 1.3); // => 3.6
@@ -328,7 +328,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   NumberUtils.adds([1.1, null, 1.3]); // => 2.4
   ```
 
-* **minus(value1: number | null | undefined, value2: number | null | undefined) => number**  
+* ***minus(value1: number | null | undefined, value2: number | null | undefined) => number***  
   return minus value.
   ```ts
   NumberUtils.minus(2.5, 1.1); // => 1.4
@@ -342,7 +342,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   NumberUtils.getFloatPosition(123.45); // => 2
   ```
 
-* **round(value: number, float?: number) => number**  
+* ***round(value: number, float?: number) => number***  
   return rounded value.
   ```ts
   NumberUtils.round(31.5);     // => 32
@@ -352,7 +352,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   NumberUtils.round(1.464, 1); // => 1.5
   ```
 
-* **ceil(value: number, float?: number) => number**  
+* ***ceil(value: number, float?: number) => number***  
   return rounded up value.
   ```ts
   NumberUtils.ceil(31.5);     // => 32
@@ -362,7 +362,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   NumberUtils.ceil(1.464, 1); // => 1.5
   ```
 
-* **floor(value: number, float?: number) => number**  
+* ***floor(value: number, float?: number) => number***  
   return rounded down value.
   ```ts
   NumberUtils.floor(31.5);     // => 31
@@ -546,7 +546,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 <details>
 <summary class="caption">ArrayUtils</summary>
 
-* **generateArray<T = unknown>(length: number, initValue?: T | ((index: number) => T)) => T[]**  
+* ***generateArray<T = unknown>(length: number, initValue?: T | ((index: number) => T)) => T[]***  
   return new array object.
   ```ts
   ArrayUtils.generateArray(5); // => [undefined, undefined, undefined, undefined, undefined]
@@ -582,7 +582,7 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
 <details>
 <summary class="caption">PromiseUtils</summary>
 
-* **awaitAll(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; }) => Promise\<Array\<any>>**
+* ***awaitAll(promises: Array\<Promise\<void> | (() => Promise\<any>)>, options?: { listenInterval?: number; }) => Promise\<Array\<any>>***  
   wait all promise. regardless of the results.  
   ```ts
   const promises = [];
@@ -609,11 +609,11 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
     console.log(errors); // [Error: error ...]
   });
   ```
-* **awaitAny(promises: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>**
+* ***awaitAny(promises: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>***  
   wait any promise. regardless of the results.  
-* **awaitAnySucceeded(promises: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>**
-  wait any succeeded(then) promise.
-* **awaitAnyFailed(functions: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<any>**
-  wait any failed(catch) promise.
+* **awaitAnySucceeded(promises: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<void>**  
+  wait any succeeded(then) promise.  
+* **awaitAnyFailed(functions: Array\<Promise\<any> | (() => Promise\<any>)>, options?: { listenInterval?: number; finally?: (errors: Array\<any>) => void; }) => Promise\<any>**  
+  wait any failed(catch) promise.  
 
 </details>

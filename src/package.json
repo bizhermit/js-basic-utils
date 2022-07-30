@@ -1,31 +1,7 @@
 {
   "name": "@bizhermit/basic-utils",
-  "version": "2.0.0-rc.0",
+  "version": "2.0.0-rc.1",
   "description": "basic types utilities",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bizhermit/js-basic-utils.git"
-  },
-  "bugs": "https://github.com/bizhermit/js-basic-utils/issues",
-  "author": "Senda Ryoichi <rsenda@bizhermit.com> (https://bizhermit.com)",
-  "homepage": "https://bizhermit.com",
-  "license": "MIT",
-  "files": [
-    "string-utils.js",
-    "string-utils.d.ts",
-    "number-utils.js",
-    "number-utils.d.ts",
-    "datetime-utils.js",
-    "datetime-utils.d.ts",
-    "array-utils.js",
-    "array-utils.d.ts",
-    "promise-utils.js",
-    "promise-utils.d.ts",
-    "CREDIT"
-  ],
-  "devDependencies": {
-    "typescript": "^4.7.4"
-  },
   "keywords": [
     "bizhermit",
     "utils",
@@ -34,5 +10,22 @@
     "datetime",
     "array",
     "promise"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bizhermit/js-basic-utils.git"
+  },
+  "bugs": "https://github.com/bizhermit/js-basic-utils/issues",
+  "author": "Senda Ryoichi <rsenda@bizhermit.com> (https://bizhermit.com)",
+  "homepage": "https://bizhermit.com",
+  "license": "MIT",
+  "types": "index.d.ts",
+  "files": [
+    "dist",
+    "CREDIT",
+    "index.d.ts"
+  ],
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
 }
