@@ -10,17 +10,9 @@
   "author": "Senda Ryoichi <rsenda@bizhermit.com> (https://bizhermit.com)",
   "homepage": "https://bizhermit.com",
   "license": "MIT",
+  "types": "dist",
   "files": [
-    "string-utils.js",
-    "string-utils.d.ts",
-    "number-utils.js",
-    "number-utils.d.ts",
-    "datetime-utils.js",
-    "datetime-utils.d.ts",
-    "array-utils.js",
-    "array-utils.d.ts",
-    "promise-utils.js",
-    "promise-utils.d.ts",
+    "dist",
     "CREDIT"
   ],
   "devDependencies": {

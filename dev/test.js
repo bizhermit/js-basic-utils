@@ -1,10 +1,10 @@
-const { default: arrayUtils } = require("./basic-utils/array-utils");
+const { default: arrayUtils } = require("./dist/array-utils");
 
-const StringUtils = require("./basic-utils/string-utils").default;
-const NumberUtils = require("./basic-utils/number-utils").default;
-const DatetimeUtils = require("./basic-utils/datetime-utils").default;
-const ArrayUtils = require("./basic-utils/array-utils").default;
-const PromiseUtils = require("./basic-utils/promise-utils").default;
+const StringUtils = require("./dist/string-utils").default;
+const NumberUtils = require("./dist/number-utils").default;
+const DatetimeUtils = require("./dist/datetime-utils").default;
+const ArrayUtils = require("./dist/array-utils").default;
+const PromiseUtils = require("./dist/promise-utils").default;
 
 console.log(StringUtils.fillLeft("test", 10, "0"));
 console.log(StringUtils.fillRight("test", 10, "0"))
