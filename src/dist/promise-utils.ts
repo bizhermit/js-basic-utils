@@ -125,3 +125,5 @@ namespace PromiseUtils {
 };
 
 export default PromiseUtils;
+export const awaitAll = PromiseUtils.awaitAll;
+export const awaitAny = PromiseUtils.awaitAny;

@@ -23,3 +23,4 @@ namespace ArrayUtils {
 };
 
 export default ArrayUtils;
+export const generateArray = ArrayUtils.generateArray;

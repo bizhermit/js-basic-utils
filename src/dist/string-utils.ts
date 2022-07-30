@@ -183,3 +183,8 @@ namespace StringUtils {
 };
 
 export default StringUtils;
+export const isEmpty = StringUtils.isEmpty;
+export const isAllEmpty = StringUtils.isAllEmpty;
+export const fillLeft = StringUtils.fillLeft;
+export const fillRight = StringUtils.fillRight;
+export const generateUuidV4 = StringUtils.generateUuidV4;

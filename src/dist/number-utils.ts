@@ -101,3 +101,10 @@ namespace NumberUtils {
 };
 
 export default NumberUtils;
+export const numFormat = NumberUtils.format;
+export const add = NumberUtils.add;
+export const adds = NumberUtils.adds;
+export const minus = NumberUtils.minus;
+export const round = NumberUtils.round;
+export const floor = NumberUtils.floor;
+export const ceil = NumberUtils.ceil;

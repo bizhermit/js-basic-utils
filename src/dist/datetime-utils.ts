@@ -213,3 +213,5 @@ namespace DatetimeUtils {
 };
 
 export default DatetimeUtils;
+export const dateFormat = DatetimeUtils.format;
+export const convertDate = DatetimeUtils.convert;
