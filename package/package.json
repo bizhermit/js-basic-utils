@@ -1,0 +1,33 @@
+{
+  "name": "@bizhermit/basic-utils",
+  "version": "2.0.0-rc.2",
+  "description": "basic types utilities",
+  "keywords": [
+    "bizhermit",
+    "utils",
+    "string",
+    "number",
+    "datetime",
+    "array",
+    "promise"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bizhermit/js-basic-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bizhermit/js-basic-utils/issues"
+  },
+  "author": "Senda Ryoichi <rsenda@bizhermit.com> (https://bizhermit.com)",
+  "homepage": "https://bizhermit.com",
+  "license": "MIT",
+  "types": "index.d.ts",
+  "files": [
+    "dist",
+    "CREDIT",
+    "index.d.ts"
+  ],
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}

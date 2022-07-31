@@ -1,0 +1,38 @@
+declare namespace StringUtils {
+    const isNull: (value: string | null | undefined) => value is null | undefined;
+    const isEmpty: (value: string | null | undefined) => value is null | undefined;
+    const isString: (value: unknown) => value is string;
+    const isNotNull: (value: string | null | undefined) => value is string;
+    const isNotEmpty: (value: string | null | undefined) => value is string;
+    const isAllEmpty: (...values: Array<string | null | undefined>) => boolean;
+    const isAnyEmpty: (...values: Array<string | null | undefined>) => boolean;
+    const notNull: (value: string | null | undefined, whenNullValue: string) => string;
+    const notEmpty: (value: string | null | undefined, whenEmptyValue: string) => string;
+    const contains: (value: string | null | undefined, search: string) => boolean;
+    const join: (joinStr: string, ...values: Array<string | null | undefined>) => string;
+    const fillLeft: (value: string | null | undefined, length: number, padStr?: string) => string;
+    const fillRight: (value: string | null | undefined, length: number, padStr?: string) => string;
+    const isHalfWidthNumeric: (value: string | null | undefined) => boolean;
+    const isHalfWidthAlphabet: (value: string | null | undefined) => boolean;
+    const isHalfWidthSymbols: (value: string | null | undefined) => boolean;
+    const isHalfWidthAlphanumeric: (value: string | null | undefined) => boolean;
+    const isHalfWidthAlphanumericAndSymbols: (value: string | null | undefined) => boolean;
+    const isHalfWidthKatakana: (value: string | null | undefined) => boolean;
+    const isKatakana: (value: string | null | undefined) => boolean;
+    const isFullOrHalfWidthKatakana: (value: string | null | undefined) => boolean;
+    const isHiragana: (value: string | null | undefined) => boolean;
+    const isInteger: (value: string | null | undefined) => boolean;
+    const isPhoneNumber: (value: string | null | undefined) => boolean;
+    const isPostalCode: (value: string | null | undefined) => boolean;
+    const isMailAddress: (value: string | null | undefined) => boolean;
+    const isIpv4Address: (value: string | null | undefined) => boolean;
+    const isIpv6Address: (value: string | null | undefined) => boolean;
+    const generateUuidV4: () => string;
+    const isUuidV4: (value: string | null | undefined) => boolean;
+}
+export default StringUtils;
+export declare const isEmpty: (value: string | null | undefined) => value is null | undefined;
+export declare const isAllEmpty: (...values: Array<string | null | undefined>) => boolean;
+export declare const fillLeft: (value: string | null | undefined, length: number, padStr?: string) => string;
+export declare const fillRight: (value: string | null | undefined, length: number, padStr?: string) => string;
+export declare const generateUuidV4: () => string;
