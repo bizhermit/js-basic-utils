@@ -46,6 +46,11 @@ namespace StringUtils {
     return isEmpty(value) ? false : value.indexOf(search) != -1;
   };
 
+  export const length = (value: string | null | undefined) => {
+    if (value == null) return 0;
+    return Array.from(value).length;
+  };
+  
   export const join = (joinStr: string, ...values: Array<string | null | undefined>) => {
     let ret = "";
     const js = joinStr ?? " ";
