@@ -7,6 +7,7 @@ const PromiseUtils = require("./dist/promise-utils").default;
 console.log(StringUtils.fillLeft("test", 10, "0"));
 console.log(StringUtils.fillRight("test", 10, "0"))
 console.log(StringUtils.fillLeft("testtest", 5, "0"))
+console.log(StringUtils.length("12345"))
 
 const async1 = new Promise((resolve, reject) => {
     setTimeout(() => {

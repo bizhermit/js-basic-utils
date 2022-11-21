@@ -9,6 +9,7 @@ declare namespace StringUtils {
     const notNull: (value: string | null | undefined, whenNullValue: string) => string;
     const notEmpty: (value: string | null | undefined, whenEmptyValue: string) => string;
     const contains: (value: string | null | undefined, search: string) => boolean;
+    const length: (value: string | null | undefined) => number;
     const join: (joinStr: string, ...values: Array<string | null | undefined>) => string;
     const fillLeft: (value: string | null | undefined, length: number, padStr?: string) => string;
     const fillRight: (value: string | null | undefined, length: number, padStr?: string) => string;

@@ -124,12 +124,6 @@ console.log(ArrayUtils.generateArray(24, (index) => index * 10));
   StringUtils.contains("12hoge34", "hoge"); // => true
   ```
 
-* **length = (value: string | null | undefined) => number**
-  return length.
-  ```ts
-  StringUtils.length("12345"); // => 5
-  ```
-
 * **join(joinStr: string, ...values: Array<string | null | undefined>) => string**  
   return combined text at values. if value is null or undefined, skip combine.
   ```ts
