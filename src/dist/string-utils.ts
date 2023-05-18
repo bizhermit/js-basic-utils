@@ -106,12 +106,12 @@ namespace StringUtils {
 
   export const isKatakana = (value: string | null | undefined) => {
     if (value == null) return false;
-    return /^[ァ-ヶ]+$/.test(value);
+    return /^[ァ-ヶー]+$/.test(value);
   };
 
   export const isFullOrHalfWidthKatakana = (value: string | null | undefined) => {
     if (value == null) return false;
-    return /^[｡-ﾟ+ァ-ヶ]+$/.test(value);
+    return /^[｡-ﾟ+ァ-ヶー]+$/.test(value);
   };
 
   export const isHiragana = (value: string | null | undefined) => {
