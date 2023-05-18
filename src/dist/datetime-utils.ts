@@ -202,7 +202,7 @@ namespace DatetimeUtils {
   };
 
   export const isAfterDate = (base: Date, date: Date) => {
-    return Math.floor(base.getTime() / 86400000) < Math.floor(date.getTime() / 86400000)
+    return Math.floor(base.getTime() / 86400000) < Math.floor(date.getTime() / 86400000);
   };
 
   export const validContext = (before: Date | null | undefined, after: Date | null | undefined) => {
